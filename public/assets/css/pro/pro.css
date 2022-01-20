@@ -29,6 +29,7 @@
     left: 0;
 }
 
+/*RECHERCHE*/
 
 .searchResults{
     margin-top: 70px;
@@ -40,5 +41,59 @@
 .fichePreview{
 margin: 10px;
 height: 400px;
-background-color: black;
+background-color: #898989;
+}
+
+.imageWithName{
+    display: flex;
+}
+
+.imageWithName img{
+    width: 50%;
+}
+
+.detailedProfile{
+    padding: 16px;
+    width: 100%;
+    background: #C4C4C4;
+    font-weight: bold;
+}
+
+/*ETIQUETTES*/
+.etiq{
+padding: 3px 10px;
+    color: white;
+    font-weight: bolder;
+    border-radius: 15px;
+}
+/*TYPE DE COULEURS ETIQUETTES*/
+
+.etiqGraph{
+    background-color: turquoise;
+    
+}
+.etiqDev{
+ background-color: rgb(253, 52, 52);
+}
+.etiqRef{
+    background-color: rgb(9, 202, 9);
+}
+
+
+/*Description*/ 
+
+.profileDesc{
+    display: flex;
+    height: inherit;
+    flex-direction: column;
+    height: 310px;
+        justify-content: space-around;
+
+}
+
+.gotoProfile{
+    background: #3D3D3D;
+    color: white;
+    text-align: center;
+    padding: 15px;
 }
