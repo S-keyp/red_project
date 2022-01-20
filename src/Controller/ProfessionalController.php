@@ -20,7 +20,25 @@ class ProfessionalController extends AbstractController
         ]);
     }
 
-    #[Route("/professional/new", name: "proform")]
+    #[Route('/professional/searchresults', name: 'professionalsearch')]
+    public function search(Request $request): Response
+    {
+
+
+        if ($request->isMethod('post')) {
+            $searchCriteria = $request->request->get('test');
+        }
+
+
+        return $this->render('professional/pro.html.twig', [
+            'controller_name' => 'ProfessionalController',
+            'search' => $searchCriteria
+        ]);
+    }
+
+
+
+    #[Route("/professional/new", name: "proforms")]
     public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
     {
         $professional = new Professional();
@@ -31,7 +49,7 @@ class ProfessionalController extends AbstractController
             $entityManager->flush();
         }
         return $this->render('formulaires/proform.html.twig', [
-            'professional'=>$professional,
+            'professional' => $professional,
             'form_professional' => $form->createView()
         ]);
     }

@@ -24,6 +24,7 @@
             <div class="col-md-3">
                 <h4 style="text-decoration:underline;">Métier :</h4>
                 <div class="dropdown">
+                <form action="/professionnal/recherche" method="post">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     Choisir
                 </button>
@@ -70,6 +71,7 @@
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
                 </div>
+                </form>
             </div>
         </div>
         <div class="container acces" style="margin-top:30px;">
@@ -78,6 +80,12 @@
             </div>
         </div>
     </div>
+
+    {% if search %}
+    <ul>
+            <li>{{search}}</li>
+    </ul>
+{% endif %}
 
 {% endblock %}
 

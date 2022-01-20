@@ -54,7 +54,8 @@ class Professional implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $code_postal;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->roles[] = "ROLE_USER";
         $this->roles[] = "ROLE_PRO";
     }
@@ -213,7 +214,8 @@ class Professional implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function __toString(): string{
+    public function __toString(): string
+    {
         return $this->firstname . ' ' . $this->lastname;
     }
 
