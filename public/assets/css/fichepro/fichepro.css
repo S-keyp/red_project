@@ -1,0 +1,31 @@
+.titreimage{
+    background-image: url(./../../img/pro/Group.svg);
+    height: 100%;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    background-size: cover;
+    background-position: top;
+}
+
+.titleBrand{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 300px;
+}
+
+.titleBrand h1{
+            filter: drop-shadow(2px 4px 6px black);
+
+}
+
+.beforeBrandWave{
+    position: absolute;
+    top: 530px;
+    text-align: center;
+    color: #262626;
+    right: 0;
+    left: 0;
+}
+

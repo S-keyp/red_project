@@ -54,6 +54,9 @@ class Professional implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $code_postal;
 
+    #[ORM\Column(type: 'string', length: 50)]
+    private $mail;
+
     public function __construct()
     {
         $this->roles[] = "ROLE_USER";
@@ -251,6 +254,18 @@ class Professional implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCodePostal(int $code_postal): self
     {
         $this->code_postal = $code_postal;
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(string $mail): self
+    {
+        $this->mail = $mail;
 
         return $this;
     }

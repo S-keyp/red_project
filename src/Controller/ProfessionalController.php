@@ -70,4 +70,14 @@ class ProfessionalController extends AbstractController
             'form_professional' => $form->createView()
         ]);
     }
+
+    #[Route("professional/fiche", name:"fichepro")]
+    public function FichePro(Request $request): Response
+    {
+        return $this->render('professional/profiche.html.twig', [
+            'controller_name' => 'ProfessionalController',
+            'search' => ''
+        ]);
+
+    }
 }
