@@ -16,76 +16,48 @@
         <div class="titleBrand">
             <h1>Fiche du Professionnel</h1>
         </div>
-        <h2 class="beforeBrandWave">Ma Recherche :</h2>
+        <h2 class="beforeBrandWave">Nom prenom:</h2>
         <img src="/assets/img/index/vaguetop.svg" alt="" srcset="">
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <h4 style="text-decoration:underline;">Métier :</h4>
-                <div class="dropdown">
-                <form action="/professional/searchresults" method="post">
-   <select class="form-select" name="metier" aria-label="Default select example">
-  <option selected>Choisir</option>
-  <option value="1">Graphisme</option>
-  <option value="2">Développement</option>
-  <option value="3">Référencement</option>
-</select>
+            <div class="col-md-12 carte">
+                <div class="row">
+                    <div class="col-md-6 photo">
+                        <img src="./../assets/img/pro/327_SkVNQSBGQU1PIDUxNC00NQ.jpg" style="width:20%;">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Prestation de Dimitri</h3>
+                        <p>32 ans <br> Graphiste</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <h4 style="text-decoration:underline;">Prix :</h4>
-                <div class="dropdown">
-              <select class="form-select" name="order" aria-label="Default select example">
-  <option selected>Ordre</option>
-  <option value="ASC">Croissant</option>
-  <option value="DESC">Décroissant</option>
-</select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <h4 style="text-decoration:underline;">Tri :</h4>
-                <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Par pertinence
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Par prix</a></li>
-                    <li><a class="dropdown-item" href="#">Par métiers</a></li>
-                </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <h4 style="text-decoration:underline;">Type Entreprise :</h4>
-                <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-                </div>
-            </div>
-        </div>
-        <div class="container acces" style="margin-top:30px;">
-            <div class="row">
-                <button type="submit" class="btn btn-dark">Acceder aux résultats de ma recherche</a>
-            </div>
-                            </form>
+                <div class="row">
+                    <div class="col-md-7 desc">
+                        <p class="texte"> Motivé et dynamique tananananna
+                            tanananananananananananananan
+                            nanananananannananan</p>
+                    </div>
+                    <div class="col-md-4 description">
+                        <p class="text-black" style="font-size:1.5rem;">A partir de 500€</p>
+                        <a href="" class="btn btn-secondary">Voir les Prestations</a>
+                    </div>
 
+                    <div>
+                        <label>Prestation Design</label>
+                        <input></input>
+                    </div>
+                    <div>
+                        <label>Prestation Logo</label>
+                        <input></input>
+                    </div>
+                    <div>
+                        <label>Prestation Responsive</label>
+                        <input></input>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    {% if search %}
-    <ul>
-            <li>{{search[0]}}</li>
-    </ul>
-{% endif %}
-
-
-{% endif %}
 
 {% endblock %}
 
