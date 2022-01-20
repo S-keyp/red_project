@@ -4,6 +4,10 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,13 +16,23 @@ class UserFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username')
-            ->add('password')
-            ->add('firstname')
-            ->add('lastname')
-            ->add('adress')
-            ->add('tel')
-            ->add('profile_picture')
+            ->add('username', TextType::class, [
+                'label' => 'Username'
+            ])->add('password', PasswordType::class, [
+                'label' => 'Nom'
+            ])->add('firstname', TextType::class, [
+                'label' => 'Prénom'
+            ])->add('lastname', TextType::class, [
+                'label' => 'Prénom'
+            ])->add('adress', TextType::class, [
+                'label' => 'Adresse'
+            ])->add('tel', TelType::class, [
+                'label' => 'Téléphone'
+            ])->add('profile_picture', TextType::class, [
+                'label' => 'Photo de profil'
+            ])->add('save', SubmitType::class, [
+                'label' => 'Enregistrer'
+            ])
         ;
     }
 
