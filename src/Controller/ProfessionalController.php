@@ -4,7 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Professional;
 use App\Form\ProfessionalFormType;
+use App\Repository\ProBundlesRepository;
+use App\Repository\ProfessionalRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query\Expr\Select;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,24 +20,37 @@ class ProfessionalController extends AbstractController
     {
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
-            'search' => ''
+            'search' => '',
+            'searchResults' => ''
         ]);
     }
 
 
+
+
+
     #[Route('/professional/searchresults', name: 'professionalsearch')]
-    public function search(Request $request): Response
+    public function search(Request $request, ProBundlesRepository $proFiche): Response
     {
         if ($request->isMethod('post')) {
             $searchCriteria = $request->request->all();
         }
 
+        $searchResults = $proFiche->createQueryBuilder('f')
+            ->select('f.servicePrice');
+        if ($searchCriteria['order']) {
+            $searchResults->orderBy('f.servicePrice', $searchCriteria['order']);
+        }
+        $query = $searchResults->getQuery();
+
 
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
-            'search' => $searchCriteria['metier']
+            'search' => $searchCriteria,
+            'searchResults' => $query->execute()
         ]);
     }
+
 
     #[Route("/professional/new", name: "proform")]
     public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
@@ -49,6 +65,15 @@ class ProfessionalController extends AbstractController
         return $this->render('formulaires/proform.html.twig', [
             'professional' => $professional,
             'form_professional' => $form->createView()
+        ]);
+    }
+
+    #[Route("professional/fiche", name: "fichepro")]
+    public function FichePro(Request $request): Response
+    {
+        return $this->render('professional/profiche.html.twig', [
+            'controller_name' => 'ProfessionalController',
+            'search' => ''
         ]);
     }
 }

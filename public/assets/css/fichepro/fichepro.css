@@ -29,16 +29,3 @@
     left: 0;
 }
 
-
-.searchResults{
-    margin-top: 70px;
-    display: grid;
-    grid-template-columns: repeat(3, 20%);
-    justify-content: center;
-}
-
-.fichePreview{
-margin: 10px;
-height: 400px;
-background-color: black;
-}
