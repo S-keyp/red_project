@@ -21,19 +21,18 @@ class ProfessionalController extends AbstractController
         ]);
     }
 
+
     #[Route('/professional/searchresults', name: 'professionalsearch')]
     public function search(Request $request): Response
     {
-
-
         if ($request->isMethod('post')) {
-            $searchCriteria = $request->request->get('test');
+            $searchCriteria = $request->request->all();
         }
 
 
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
-            'search' => $searchCriteria
+            'search' => $searchCriteria['metier']
         ]);
     }
 
