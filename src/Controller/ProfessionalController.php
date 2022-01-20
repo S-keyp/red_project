@@ -7,7 +7,6 @@ use App\Form\ProfessionalFormType;
 use App\Repository\ProBundlesRepository;
 use App\Repository\ProfessionalRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Query\Expr\Select;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ProfessionalController extends AbstractController
 {
+
+
     #[Route('/professional', name: 'professional')]
     public function index(): Response
     {
@@ -25,16 +26,14 @@ class ProfessionalController extends AbstractController
         ]);
     }
 
-
-
-
-
     #[Route('/professional/searchresults', name: 'professionalsearch')]
-    public function search(Request $request, ProBundlesRepository $proFiche): Response
+    public function search(Request $request, ProBundlesRepository $proFiche, ProfessionalRepository $basePro): Response
     {
         if ($request->isMethod('post')) {
             $searchCriteria = $request->request->all();
         }
+
+        /*Paramètrage de la recherche*/
 
         $searchResults = $proFiche->createQueryBuilder('f')
             ->select('f.servicePrice');
@@ -52,6 +51,7 @@ class ProfessionalController extends AbstractController
     }
 
 
+
     #[Route("/professional/new", name: "proform")]
     public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -67,6 +67,8 @@ class ProfessionalController extends AbstractController
             'form_professional' => $form->createView()
         ]);
     }
+
+
 
     #[Route("professional/fiche", name: "fichepro")]
     public function FichePro(Request $request): Response
