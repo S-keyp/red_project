@@ -52,7 +52,7 @@ class ProfessionalController extends AbstractController
         ]);
     }
 
-    #[Route(":professional/fiche", name:"fichepro")]
+    #[Route("professional/fiche", name:"fichepro")]
     public function FichePro(Request $request): Response
     {
         return $this->render('professional/profiche.html.twig', [
