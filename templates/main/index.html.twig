@@ -1,20 +1,96 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello MainController!{% endblock %}
+{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="/assets/css/index/index.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block title %}Accueil - Jobster
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="titlewithimage">
+		<div class="titleBrand">
+			<h1>Les services du numérique
+				<br>
+				à portée de main</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		</div>
+		<h2 class="beforeBrandWave">Catégories de professionnels</h2>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/s-key/red_project/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/s-key/red_project/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
-</div>
+		<img src="/assets/img/index/vaguetop.svg" alt="" srcset="">
+	</div>
+
+	<div class="servicesPreview">
+		<div class="servicePrev">
+			<a href="">
+				<img src="/assets/img/index/graph.png" alt="">
+				<h3>Graphisme</h3>
+			</a>
+		</div>
+
+		<div class="servicePrev">
+			<a href="">
+				<img src="/assets/img/index/jefe.png" alt="">
+				<h3>Référencement</h3>
+			</a>
+		</div>
+
+		<div class="servicePrev">
+			<a href="">
+				<img src="/assets/img/index/dev.png" alt="">
+				<h3>Développement</h3>
+			</a>
+		</div>
+
+
+	</div>
+
+
+	<div class="blockInformations">
+		<img src="/assets/img/index/wavesummary.svg" alt="">
+		<div class="summaryBoxWithText">
+			<div class="summaryTextBlock">
+				<h4>Jobster</h4>
+				<p>
+					Regroupe et vous met en lien avec des 
+					professionnels, prêts à prendre en main votre mission. Créez un lien avec un professionnel et obtenez un devis 
+					en quelques clics, de façon automatique.
+				</p>
+			</div>
+
+			<div class="summaryImage">
+				<img src="/assets/img/index/Jobster1.png" alt="">
+
+			</div>
+		</div>
+
+	</div>
+
+
+	<section class="blockNotations">
+		<h5>On parle de nous...</h5>
+
+		<div class="avisNameNote">
+			<img class="head" src="/assets/img/index/josette.png" alt="">
+			<div class="note">
+				<div class="stars">
+					<img src="/assets/img/index/stars.png" alt="">
+					<img src="/assets/img/index/stars.png" alt="">
+					<img src="/assets/img/index/stars.png" alt="">
+					<img src="/assets/img/index/stars.png" alt="">
+					<img src="/assets/img/index/stars.png" alt="">
+
+				</div>
+				<p class="avisName">Princesse Josette, cliente JOBSTER
+				</p>
+			</div>
+		</div>
+
+                <p class="descAvis">JOBSTER m’a permis de trouver un développeur 
+professionnel, et m’a mis a jour mon site web
+au complet.</p>
+
+	</section>
+
 {% endblock %}
+

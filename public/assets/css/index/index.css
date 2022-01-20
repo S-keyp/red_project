@@ -1,0 +1,143 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans&family=Rubik:wght@300&display=swap');
+
+
+.titlewithimage{
+    background-image: url(./../../img/index/indextop.svg);
+    height: 100%;
+    display: flex;
+    color: white;
+    flex-direction: column;
+    background-size: cover;
+    background-position: top;
+}
+
+.titleBrand{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 300px;
+}
+
+.titleBrand h1{
+            filter: drop-shadow(2px 4px 6px black);
+font-family: 'Inria Sans', sans-serif;
+
+}
+
+.beforeBrandWave{
+    position: absolute;
+    top: 530px;
+    text-align: center;
+    color: #262626;
+    right: 0;
+    left: 0;
+}
+
+.servicesPreview{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.servicePrev{
+    height: 250px;
+    width: 300px;
+    background-color: #F6F6F6;
+    border: 1px #8A8A8A solid;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.servicePrev img{
+    height: 130px;
+}
+
+.servicePrev a{
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #262626;
+    text-decoration: none;
+    font-family: 'Rubik', sans-serif;
+}
+
+/*BLOCK INFORMATIONS ORANGE*/
+.blockInformations{
+    margin-top: 150px;
+    background-color: #D64933;
+    height: 700px;
+}
+.blockInformations img{
+    width: 100%;
+}
+.summaryTextBlock h4 {
+    color: white;
+    font-size: 1.7vw;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+
+}
+.summaryTextBlock p{
+    line-height: 6vh;
+color: white;
+font-size: 1.7vw;
+font-family: 'Rubik', sans-serif;
+}
+
+.summaryImage{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.summaryBoxWithText{
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    align-items: center;
+    padding: 30px;
+    justify-content: center;
+}
+
+
+/*AVIS*/
+
+.blockNotations{
+    margin-top: 100px;
+        display: grid;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.blockNotations h5{
+    font-size: 1.6vw;
+    text-align: start;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+
+}
+
+.avisNameNote{
+    display: flex;
+}
+
+.avisName{
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+
+}
+
+.head{
+    height: 130px;
+}
+
+.stars img{
+    height: 30px;
+}
+
+.descAvis{
+    padding: 15px;
+    width: 75%;
+    font-size: 1.5vw;
+}

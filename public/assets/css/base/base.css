@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap');
+
+/*NAVIGATION*/
+a:hover{
+    color: #2D2D2D!important;
+}
+
+.preNav{
+    height: 70px;
+}
+
+.buttonsGroup{
+    padding-inline-end: 200px;
+    text-align: end;
+}
+.prospace{
+    color: white;
+    background-color: #D64933;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Inria Sans', sans-serif;
+}
+
+.identLink{
+    text-decoration: none;
+    color: #2D2D2D;
+    font-weight: bold;
+    font-family: 'Inria Sans', sans-serif;
+    padding-inline-end: 30px;
+}
+
+/*bg navbar */
+
+.navbar{
+    background-color: #2B303A;
+}
+
+.nav-link:hover{
+    color: white!important;
+}
+
+.logo{
+    position: relative;
+    width: 50%;
+}
+
+/*Footer*/
+
+.footer{
+    margin-top: 100px;
+    height: 400px;
+    background-image: url(./../../img/base/footer.svg);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/*colonne footer - titre*/
+
+.titleCol{
+    color: white;
+    font-size: 1.7vw;
+    text-decoration: underline;
+}
+
+.colList{
+    list-style: none;
+}
+
+.itemFooter{
+    color: white;
+    text-decoration: none;
+}
+
+.itemFooter:hover{
+    color: white!important;
+}
+
+.footerCopy{
+    height: 70px;
+    background: #242424;
+}
+
+.footerCopy p{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}

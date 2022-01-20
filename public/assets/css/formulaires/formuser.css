@@ -1,0 +1,35 @@
+main {
+    justify-content: center;
+    align-items: center;
+}
+
+.soustitre {
+  padding-right: 27rem;
+}
+
+.lead {
+  padding-right: 27rem;
+}
+
+.ajouter {
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+  border-radius: 0.25rem;
+}
+
+.enregistrer {
+  background: #d64933 !important;
+  color: white !important;
+  width: 20%;
+}
+
+.retour {
+  border: 0.5px solid grey !important;
+  width: 20%;
+}
+
+.deuxboutons {
+    justify-content: space-around;
+    
+}

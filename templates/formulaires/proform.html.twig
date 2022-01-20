@@ -1,0 +1,138 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Formulaire pro - Inscription professionnel{% endblock %}
+
+{% block body %}
+
+{# <main>
+            <div class="py-5 text-center mt-5">
+                <h2>Inscription professionnel</h2>
+                <p class="lead">Veuillez compléter le formulaire ci-dessous afin d'enregistrer vos informations.</p>
+            </div>
+ 
+                <div class="col-md-7 col-lg-8">
+                    <h4 class="mb-3">Adresse</h4>
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="nom" class="form-label">Nom</label>
+                                <input type="text" class="form-control" id="nom" placeholder="" value="" required>
+                            </div>
+ 
+                            <div class="col-sm-6">
+                                <label for="prenom" class="form-label">Prénom</label>
+                                <input type="text" class="form-control" id="prenom" placeholder="" value="" required>
+                            </div>
+                            
+                            <div class="col-sm-6">
+                                <label for="société" class="form-label">Société</label>
+                                <input type="text" class="form-control" id="nom" placeholder="" value="" required>
+                            </div>
+ 
+                            <div class="col-sm-6">
+                                <label for="siret" class="form-label">N° Siret</label>
+                                <input type="text" class="form-control" id="N° siret" placeholder="" value="" required>
+                            </div>
+ 
+                            <div class="col-12">
+                                <label for="address" class="form-label">Adresse</label>
+                                <input type="text" class="form-control" id="address" placeholder="14 Avenue de la siliconvallée" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="email" class="form-label">Email
+                                </label>
+                                <input type="email" class="form-control" id="email" placeholder="mon-email@gmail.com">
+                            </div>
+ 
+                            <div class="col-md-5">
+                                <label for="pays" class="form-label">Pays</label>
+                                <select class="form-select" id="pays" required>
+                                    <option value="">Sélectionner...</option>
+                                    <option>France</option>
+                                </select>
+                            </div>
+ 
+                            <div class="col-md-3">
+                                <label for="zip" class="form-label">Code postal</label>
+                                <input type="text" class="form-control" id="zip" placeholder="" required>
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-md-3">
+                                <label for="telephone" class="form-label">Téléphone</label>
+                                <input type="text" class="form-control" id="zip" placeholder="" required>
+                            </div>
+
+                        <a href="chemin/vers/ton/cv.doc">Télécharger mon CV</a>
+ 
+                        <hr class="my-4">
+
+                        <h4 class="mb-3">Types de prestations proposées</h4>
+
+                <div class="row g-3">
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Search Engine Optimization">
+                            <label class="form-check-label" for="Search Engine Optimization">SEO</label>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="Search Engine Advertising">
+                            <label class="form-check-label" for="Search Engine Advertising">SEA</label>
+                        </div>
+                    </div>
+
+                    <div class="col-4">    
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="cms">
+                            <label class="form-check-label" for="cms">CMS</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-4">  
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="application">
+                            <label class="form-check-label" for="application">Application</label>
+                        </div>
+                    </div>
+
+                    <div class="col-4"> 
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="designlogo">
+                            <label class="form-check-label" for="designlogo">Design logo</label>
+                        </div>
+                    </div>
+
+                    <div class="col-4"> 
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="dev">
+                            <label class="form-check-label" for="dev">Développement</label>
+                        </div>
+                    </div>
+                </div>
+                
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Enregistrer mes informations</button>
+
+                    </form>
+                </div>
+            </div>
+        </main>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <h4>Formulaire professionnel</h4>
+            </div>
+        </div>
+    </div>
+ #}
+    <div class="form">
+    {{  form(form_professional) }}
+    </div>
+{% endblock %}
+
