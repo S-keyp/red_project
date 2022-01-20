@@ -40,7 +40,6 @@
 
 .fichePreview{
 margin: 10px;
-height: 400px;
 background-color: #898989;
 }
 
@@ -84,10 +83,10 @@ padding: 3px 10px;
 
 .profileDesc{
     display: flex;
-    height: inherit;
     flex-direction: column;
-    height: 310px;
-        justify-content: space-around;
+        justify-content: space-between;
+        height: 200px;
+
 
 }
 
