@@ -17,6 +17,7 @@ class ProfessionalController extends AbstractController
     {
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
+            'search' => ''
         ]);
     }
 
@@ -35,8 +36,6 @@ class ProfessionalController extends AbstractController
             'search' => $searchCriteria
         ]);
     }
-
-
 
     #[Route("/professional/new", name: "proform")]
     public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
