@@ -20,7 +20,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route("/user/new", name: "proform")]
+    #[Route("/user/new", name: "userform")]
     public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = new User();

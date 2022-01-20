@@ -38,7 +38,7 @@ class ProfessionalController extends AbstractController
 
 
 
-    #[Route("/professional/new", name: "proforms")]
+    #[Route("/professional/new", name: "proform")]
     public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
     {
         $professional = new Professional();
