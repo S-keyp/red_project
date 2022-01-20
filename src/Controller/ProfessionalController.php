@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Professional;
 use App\Form\ProfessionalFormType;
+use App\Repository\ProfessionalRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,19 +23,37 @@ class ProfessionalController extends AbstractController
     }
 
 
+
+
+
     #[Route('/professional/searchresults', name: 'professionalsearch')]
-    public function search(Request $request): Response
+    public function search(Request $request, ProfessionalRepository $professionalRepository): Response
     {
         if ($request->isMethod('post')) {
             $searchCriteria = $request->request->all();
         }
 
+        // $searchResults = $professionalRepository->createQueryBuilder('pro')
+        // ->orderBy('pro.price')
+
+        // public function findByExampleField($value)
+        // {
+        //     return $this->createQueryBuilder('a')
+        //         ->andWhere('a.exampleField = :val')
+        //         ->setParameter('val', $value)
+        //         ->orderBy('a.{6:id}', 'ASC')
+        //         ->setMaxResults(10)
+        //         ->getQuery()
+        //         ->getResult();
+        // }
+
 
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
-            'search' => $searchCriteria['metier']
+            'search' => $searchCriteria
         ]);
     }
+
 
     #[Route("/professional/new", name: "proform")]
     public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
