@@ -45,6 +45,15 @@ class Professional implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $description;
 
+    #[ORM\Column(type: 'string', length: 100, nullable: true)]
+    private $profile_picture;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $country;
+
+    #[ORM\Column(type: 'integer')]
+    private $code_postal;
+
     public function __construct() {
         $this->roles[] = "ROLE_USER";
         $this->roles[] = "ROLE_PRO";
@@ -206,5 +215,41 @@ class Professional implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString(): string{
         return $this->firstname . ' ' . $this->lastname;
+    }
+
+    public function getProfilePicture(): ?string
+    {
+        return $this->profile_picture;
+    }
+
+    public function setProfilePicture(?string $profile_picture): self
+    {
+        $this->profile_picture = $profile_picture;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?int
+    {
+        return $this->code_postal;
+    }
+
+    public function setCodePostal(int $code_postal): self
+    {
+        $this->code_postal = $code_postal;
+
+        return $this;
     }
 }

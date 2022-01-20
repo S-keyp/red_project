@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Professional;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -34,6 +35,10 @@ class ProfessionalFormType extends AbstractType
                 'label' => 'Nom de l\'entreprise'
             ])->add('description', TextType::class, [
                 'label' => 'Description'
+            ])->add('country', TextType::class, [
+                'label' => 'Pays'
+            ])->add('code_postal', IntegerType::class, [
+                'label' => 'Code postal'
             ])->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'
             ])
