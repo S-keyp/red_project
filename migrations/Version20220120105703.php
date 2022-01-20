@@ -20,12 +20,12 @@ final class Version20220120105703 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE professional ADD profile_picture VARCHAR(100) DEFAULT NULL, ADD country VARCHAR(255) NOT NULL, ADD code_postal INT NOT NULL');
+        //$this->addSql('ALTER TABLE professional ADD country VARCHAR(255) NOT NULL, ADD code_postal INT NOT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE professional DROP profile_picture, DROP country, DROP code_postal');
+        //$this->addSql('ALTER TABLE professional DROP profile_picture, DROP country, DROP code_postal');
     }
 }
