@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Professional;
 use App\Form\ProfessionalFormType;
+use App\Repository\ProBundlesRepository;
 use App\Repository\ProfessionalRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query\Expr\Select;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +20,8 @@ class ProfessionalController extends AbstractController
     {
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
-            'search' => ''
+            'search' => '',
+            'searchResults' => ''
         ]);
     }
 
@@ -27,30 +30,24 @@ class ProfessionalController extends AbstractController
 
 
     #[Route('/professional/searchresults', name: 'professionalsearch')]
-    public function search(Request $request, ProfessionalRepository $professionalRepository): Response
+    public function search(Request $request, ProBundlesRepository $proFiche): Response
     {
         if ($request->isMethod('post')) {
             $searchCriteria = $request->request->all();
         }
 
-        // $searchResults = $professionalRepository->createQueryBuilder('pro')
-        // ->orderBy('pro.price')
-
-        // public function findByExampleField($value)
-        // {
-        //     return $this->createQueryBuilder('a')
-        //         ->andWhere('a.exampleField = :val')
-        //         ->setParameter('val', $value)
-        //         ->orderBy('a.{6:id}', 'ASC')
-        //         ->setMaxResults(10)
-        //         ->getQuery()
-        //         ->getResult();
-        // }
+        $searchResults = $proFiche->createQueryBuilder('f')
+            ->select('f.servicePrice');
+        if ($searchCriteria['order']) {
+            $searchResults->orderBy('f.servicePrice', $searchCriteria['order']);
+        }
+        $query = $searchResults->getQuery();
 
 
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
-            'search' => $searchCriteria
+            'search' => $searchCriteria,
+            'searchResults' => $query->execute()
         ]);
     }
 
@@ -71,13 +68,12 @@ class ProfessionalController extends AbstractController
         ]);
     }
 
-    #[Route("professional/fiche", name:"fichepro")]
+    #[Route("professional/fiche", name: "fichepro")]
     public function FichePro(Request $request): Response
     {
         return $this->render('professional/profiche.html.twig', [
             'controller_name' => 'ProfessionalController',
             'search' => ''
         ]);
-
     }
 }

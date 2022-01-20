@@ -20,10 +20,13 @@ class ProBundles
     private $descriptionService;
 
     #[ORM\Column(type: 'integer')]
-    private $imageService;
+    private $Professionnal;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image_service;
 
     #[ORM\Column(type: 'integer')]
-    private $Professionnal;
+    private $servicePrice;
 
     public function getId(): ?int
     {
@@ -56,12 +59,12 @@ class ProBundles
 
     public function getImageService(): ?int
     {
-        return $this->imageService;
+        return $this->image_service;
     }
 
     public function setImageService(int $imageService): self
     {
-        $this->imageService = $imageService;
+        $this->image_service = $imageService;
 
         return $this;
     }
@@ -74,6 +77,18 @@ class ProBundles
     public function setProfessionnal(int $Professionnal): self
     {
         $this->Professionnal = $Professionnal;
+
+        return $this;
+    }
+
+    public function getServicePrice(): ?int
+    {
+        return $this->servicePrice;
+    }
+
+    public function setServicePrice(int $servicePrice): self
+    {
+        $this->servicePrice = $servicePrice;
 
         return $this;
     }

@@ -78,12 +78,37 @@
         </div>
     </div>
 
+
+    <div class="searchResults">
+    <div class="fichePreview">
+    
+    </div>
+        <div class="fichePreview">
+    
+    </div>
+        <div class="fichePreview">
+    
+    </div>
+        <div class="fichePreview">
+    
+    </div>
+    </div>
+
     {% if search %}
     <ul>
             <li>{{search.metier}}</li>
-            <li>{{search.price}}</li>
+            <li>{{search.order}}</li>
 
     </ul>
+{% endif %}
+
+    {% if searchResults %}
+
+<ul>
+   {% for results in searchResults %}
+        <li>{{ results.servicePrice }}</li>
+    {% endfor %}
+</ul>
 {% endif %}
 
 {% endblock %}
