@@ -4,16 +4,13 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Form;
-use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -26,6 +23,8 @@ class ProfessionalFormType extends AbstractType
                 'label' => 'Username'
             ])->add('email', EmailType::class, [
                 'label' => 'Email'
+            ])->add('roles', HiddenType::class, [
+                'empty_data' => ['ROLE_PRO'],
             ])->add('password', PasswordType::class, [
                 'label' => 'Mot de passe'
             ])->add('firstname', TextType::class, [
@@ -48,21 +47,14 @@ class ProfessionalFormType extends AbstractType
                 'label' => 'Code postal'
             ])->add('profile_picture', TextType::class, [
                 'label' => 'Photo de profil'
-            ])->add('prestation', ChoiceType::class, [
+            ])->add('prestation', TextType::class, [     /* Modifier l'ajout en tableau ou json */
                 'label' => 'Prestation',
-                'choices' => [
-                    'English' => 'en',
-                    'Spanish' => 'es',
-                    'Bork' => 'muppets',
-                    'Pirate' => 'arr',
-                ],
-                'preferred_choices' => ['muppets', 'arr'],
             ])->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'
             ]);
     }
 
-    public function CheckboxForm(FormBuilderInterface $builder, array $options): void
+    /* public function CheckboxForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('seo', CheckboxType::class, [
@@ -84,7 +76,7 @@ class ProfessionalFormType extends AbstractType
                 ])->add('valid', SubmitType::class, [
                 'label' => 'Valider',
         ]);
-    }
+    } */
 
 
     public function configureOptions(OptionsResolver $resolver): void

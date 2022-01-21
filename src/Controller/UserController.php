@@ -121,7 +121,7 @@ class UserController extends AbstractController
         }
          return $this->render('formulaires/bundleform.html.twig', [
             'fichebundle' => $ficheBundle,
-            'form' => $form->createView()
+            'form_probundles' => $form->createView()
         ]);
     }
     
