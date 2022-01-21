@@ -27,10 +27,10 @@
 				<div class="dropdown">
 					<form action="/professional/searchresults" method="post">
 						<select class="form-select" name="metier" aria-label="Default select example">
-							<option selected>Choisir</option>
-							<option value="graph">Graphisme</option>
-							<option value="dev">Développement</option>
-							<option value="ref">Référencement</option>
+							<option selected value="">Choisir</option>
+							<option value="1">Graphisme</option>
+							<option value="2">Développement</option>
+							<option value="3">Référencement</option>
 						</select>
 					</div>
 				</div>
@@ -38,7 +38,7 @@
 					<h4 style="text-decoration:underline;">Prix :</h4>
 					<div class="dropdown">
 						<select class="form-select" name="order" aria-label="Default select example">
-							<option selected>Ordre</option>
+							<option selected value="">Ordre</option>
 							<option value="ASC">Croissant</option>
 							<option value="DESC">Décroissant</option>
 						</select>
@@ -89,49 +89,49 @@
 		</div>
 	</div>
 
-
-	<div class="searchResults">
-		<div class="fichePreview"></div>
-		<div class="fichePreview">
-			<div class="imageWithName">
-				<img src="/assets/img/pro/defaultpro.png" alt="" srcset="">
-				<div class="detailedProfile">
-					<span class="etiq etiqGraph">Graphiste</span>
-					<p class="nameDetails">
-						José<br>
-						21 ans<br>
-					</p>
-				</div>
-			</div>
-
-			<div class="profileDesc">
-				<p>Motivé et dynamique tananananna
-															tananananananananan</p>
-				<a href="" class="gotoProfile">Voir les prestations</a>
-
-
-			</div>
-
-		</div>
-		<div class="fichePreview"></div>
-		<div class="fichePreview"></div>
-	</div>
-
-	{% if search %}
-		<ul>
-			<li>{{search.metier}}</li>
-			<li>{{search.order}}</li>
-
-		</ul>
-	{% endif %}
-
 	{% if searchResults %}
 
-		<ul>
-			{% for results in searchResults %}
-				<li>{{ results.servicePrice }}</li>
-			{% endfor %}
-		</ul>
-	{% endif %}
+		<div class="searchResults">
 
-{% endblock %}
+
+			{% for results in searchResults %}
+
+
+				<div class="fichePreview">
+					<div class="imageWithName">
+						<img src="/assets/img/pro/defaultpro.png" alt="" srcset="">
+						<div class="detailedProfile">
+							{% if results.serviceCategory == "Graphiste" %}
+								<span class="etiq etiqGraph">{{results.serviceCategory}}</span>
+							{% elseif results.serviceCategory == "Développeur" %}
+								<span class="etiq etiqDev">{{results.serviceCategory}}</span>
+							{% elseif results.serviceCategory == "Référencement" %}
+								<span class="etiq etiqRef">{{results.serviceCategory}}</span>
+							{% endif %}
+
+
+							<p class="nameDetails">
+								{{results.name|join(', ')}}
+							</p>
+						</div>
+					</div>
+
+					<div class="profileDesc">
+
+						<p>
+							<span class="quote">"</span>
+							{{results.descriptionService}}</p>
+						<span class="quotebottom">"</span>
+
+					</p>
+
+
+					<a href="" class="gotoProfile">Voir toutes les prestations</a>
+
+
+				</div>
+
+			</div>
+		{% endfor %}
+	{% endif %}
+</div>{% endblock %}

@@ -17,7 +17,6 @@
 
 .titleBrand h1{
             filter: drop-shadow(2px 4px 6px black);
-
 }
 
 .beforeBrandWave{
@@ -85,9 +84,19 @@ padding: 3px 10px;
     display: flex;
     flex-direction: column;
         justify-content: space-between;
-        height: 200px;
+        max-height: 200px;
 
+}
 
+.quote{
+        color: #262626;
+font-size: 1.9vw;
+}
+
+.quotebottom{
+        color: #262626;
+font-size: 1.9vw;
+text-align: end;
 }
 
 .gotoProfile{

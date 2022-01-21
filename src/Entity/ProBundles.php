@@ -25,8 +25,13 @@ class ProBundles
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $image_service;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'float')]
     private $servicePrice;
+
+    #[ORM\Column(type: 'smallint')]
+    private $serviceCategory;
+
+
 
     public function getId(): ?int
     {
@@ -89,6 +94,18 @@ class ProBundles
     public function setServicePrice(int $servicePrice): self
     {
         $this->servicePrice = $servicePrice;
+
+        return $this;
+    }
+
+    public function getServiceCategory(): ?int
+    {
+        return $this->serviceCategory;
+    }
+
+    public function setServiceCategory(int $serviceCategory): self
+    {
+        $this->serviceCategory = $serviceCategory;
 
         return $this;
     }

@@ -60,7 +60,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer', nullable: false)]
     private $prestation;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->roles[] = "ROLE_USER";
     }
 
@@ -194,8 +195,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function __toString(): string{
-        return $this->firstname . ' ' . $this->lastname;
+    public function __toString(): string
+    {
+        return $this->firstname . ' ' . $this->lastname . ',' . $this->country;
     }
 
     public function getSiret(): ?int

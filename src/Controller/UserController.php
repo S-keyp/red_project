@@ -34,12 +34,12 @@ class UserController extends AbstractController
             $entityManager->flush();
         }
         return $this->render('formulaires/userform.html.twig', [
-            'user'=>$user,
+            'user' => $user,
             'form_user' => $form->createView()
         ]);
     }
 
-    
+
     #[Route('/professional', name: 'professional')]
     public function indexPro(): Response
     {
@@ -51,26 +51,37 @@ class UserController extends AbstractController
     }
 
     #[Route('/professional/searchresults', name: 'professionalsearch')]
-    public function search(Request $request, ProBundlesRepository $proFiche, UserRepository $basePro): Response
+    public function search(Request $request, ProBundlesRepository $proFiche, UserRepository $users): Response
     {
+
         if ($request->isMethod('post')) {
             $searchCriteria = $request->request->all();
         }
 
-        /*Paramètrage de la recherche*/
-
+        /*Paramètrage de la recherche query builder */
         $searchResults = $proFiche->createQueryBuilder('f')
-            ->select('f.servicePrice');
+            ->select('f.servicePrice, f.serviceCategory, f.Professionnal, f.descriptionService');
         if ($searchCriteria['order']) {
             $searchResults->orderBy('f.servicePrice', $searchCriteria['order']);
+        } else if ($searchCriteria['metier']) {
+            $searchResults->where('f.serviceCategory = ' . $searchCriteria['metier']);
         }
+
+        /*Récupération des résultats*/
         $query = $searchResults->getQuery();
+
+        //Load variable qui stocke les users
+        $res = $query->execute();
+        for ($i = 0; $i < count($res); $i++) {
+            $res[$i]['serviceCategory'] = $proFiche->getJob($res[$i]['serviceCategory']);
+            $res[$i]['name'] = $users->fetchById($res[$i]['Professionnal']);
+        }
 
 
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
             'search' => $searchCriteria,
-            'searchResults' => $query->execute()
+            'searchResults' => $res
         ]);
     }
 
@@ -103,4 +114,3 @@ class UserController extends AbstractController
         ]);
     }
 }
-
