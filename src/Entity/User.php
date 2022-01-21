@@ -39,6 +39,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 90, nullable: true)]
     private $profile_picture;
 
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $siret;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $society_name;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $description;
+
+    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    private $country;
+
+    #[ORM\Column(type: 'integer')]
+    private $code_postal;
+
+    #[ORM\Column(type: 'string', length: 90)]
+    private $email;
+
+    #[ORM\Column(type: 'integer', nullable: false)]
+    private $prestation;
+
     public function __construct() {
         $this->roles[] = "ROLE_USER";
     }
@@ -175,5 +196,89 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString(): string{
         return $this->firstname . ' ' . $this->lastname;
+    }
+
+    public function getSiret(): ?int
+    {
+        return $this->siret;
+    }
+
+    public function setSiret(?int $siret): self
+    {
+        $this->siret = $siret;
+
+        return $this;
+    }
+
+    public function getSocietyName(): ?string
+    {
+        return $this->society_name;
+    }
+
+    public function setSocietyName(?string $society_name): self
+    {
+        $this->society_name = $society_name;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?int
+    {
+        return $this->code_postal;
+    }
+
+    public function setCodePostal(int $code_postal): self
+    {
+        $this->code_postal = $code_postal;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPrestation(): ?int
+    {
+        return $this->prestation;
+    }
+
+    public function setPrestation(?int $prestation): self
+    {
+        $this->prestation = $prestation;
+
+        return $this;
     }
 }
