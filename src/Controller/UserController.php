@@ -116,7 +116,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             /*$uploadedFile = $form['image_service']->getData();*/
-            echo $form['titleService'];
+            
             $entityManager->persist($ficheBundle);
             $entityManager->flush();
         }
