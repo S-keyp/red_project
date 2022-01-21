@@ -1,28 +1,29 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Formulaire utilisateur - Inscription utilisateur{% endblock %}
+{% block title %}Formulaire utilisateur - Inscription utilisateur
+{% endblock %}
 {% block stylesheets %}
 
-<link href="/assets/css/formulaires/formuser.css" rel="stylesheet" type="text/css"/>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="/assets/css/formulaires/formuser.css" rel="stylesheet" type="text/css"/>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 {% endblock %}
 
 {% block body %}
+	<script src="/assets/js/toggler.js"></script>
+	<main>
+		<div class="py-5 text-center mt-5">
+			<h1>Inscription utilisateur</h1>
+			<p class="lead">Veuillez compléter le formulaire utilisateur ci-dessous afin d'enregistrer vos informations.</p>
+		</div>
 
-<main>
-    <div class="py-5 text-center mt-5">
-        <h1>Inscription utilisateur</h1>
-        <p class="lead">Veuillez compléter le formulaire utilisateur ci-dessous afin d'enregistrer vos informations.</p>
-    </div>
-    
-<div class="container">
-    <div class="row background">
-        {{ form_start(form_user, {
+		<div class="container">
+			<div class="row background">
+				{{ form_start(form_user, {
             'attr': {
                 'novalidate': 'novalidate',
                     'class': 'col-lg-5' 
@@ -30,85 +31,117 @@
                     })
                 }}
 
-<div class="row">
-    <div class="col-6">
-        {{  form_row(form_user.firstname) }}
-        {{  form_row(form_user.username) }}
-    </div>
-<div class="col-6">       
-        {{  form_row(form_user.lastname) }}
-</div>
-        {{  form_row(form_user.adress) }}    
-<div class="row">
-    <div class="col-6">
-        {{  form_row(form_user.code_postal) }}
-        {{  form_row(form_user.tel) }}
-    </div>
-    <div class="col-6">
-        {{  form_row(form_user.country) }}
-    </div>
+				<div class="row">
+					<div class="col-6">
+						{{  form_row(form_user.firstname) }}
+						{{  form_row(form_user.username) }}
+					</div>
+					<div class="col-6">
+						{{  form_row(form_user.lastname) }}
+					</div>
+					{{  form_row(form_user.adress) }}
+					<div class="row">
+						<div class="col-6">
+							{{  form_row(form_user.code_postal) }}
+							{{  form_row(form_user.tel) }}
+						</div>
+						<div class="col-6">
+							{{  form_row(form_user.country) }}
+						</div>
 
-<hr class="my-4">
+						<hr class="my-4">
 
-        {{  form_row(form_user.email) }}
-        {{  form_row(form_user.password) }}
+						{{  form_row(form_user.email) }}
+						{{  form_row(form_user.password) }}
 
-<hr class="my-4">
+						<hr class="my-4">
 
-        {{  form_row(form_user.save) }}
-        
-
-<!-- Button trigger modal -->
-    <button type="button" class="buttonpay" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Mes informations de paiements
-    </button>
-
-</div>
+						{{  form_row(form_user.save) }}
 
 
+						<!-- Button trigger modal -->
+						<button type="button" class="buttonpay" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							Mes informations de paiements
+						</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
-                <div class="tabs mt-3">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> <img src="https://i.imgur.com/sB4jftM.png" width="80"> </a> </li>
-                        <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
-                            <div class="mt-4 mx-4">
-                                <div class="text-center">
-                                    <h5>Credit card</h5>
-                                </div>
-                                <div class="form mt-3">
-                                    <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"> <span>Cardholder Name</span> </div>
-                                    <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Card Number</span> <i class="fa fa-eye"></i> </div>
-                                    <div class="d-flex flex-row">
-                                        <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Expiration Date</span> </div>
-                                        <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>CVV</span> </div>
-                                    </div>
-                                    <div class="px-5 pay"> <button class="btn btn-success btn-block">Add card</button> </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade show" id="paypal" role="tabpanel" aria-labelledby="paypal">
-                            <div class="px-5 mt-5">
-                                <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"> <span>Paypal Email Address</span> </div>
-                                <div class="pay px-5"> <button class="btn btn-primary btn-block">Add paypal</button> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+					</div>
 
-</main>
 
-{% endblock %}
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-body">
+									<div class="text-right">
+										<i class="fa fa-close close" data-dismiss="modal"></i>
+									</div>
+									<div class="tabs mt-3">
+										<ul class="nav nav-tabs" id="myTab" role="tablist">
+											<li class="nav-item" role="presentation">
+												<a class="nav-link" id="cardsBtn" data-toggle="visa-part" href="#visa" role="tab" aria-controls="visa" aria-selected="true">
+													<img src="https://i.imgur.com/sB4jftM.png" width="80">
+												</a>
+											</li>
+											<li class="nav-item" role="presentation">
+												<a class="nav-link active" id="paypalBtn" data-toggle="paypal-part" href="#paypal-part" role="tab" aria-controls="paypal" aria-selected="false">
 
+													<img src="https://i.imgur.com/yK7EDD1.png" width="80">
+												</a>
+											</li>
+										</ul>
+										<div class="tab-content" id="myTabContent">
+											<div class="tab-pane fade show active" id="cardsContent" role="tabpanel" aria-labelledby="visa-tab">
+
+												<div class="mt-4 mx-4">
+													<div class="text-center">
+														<h5>Credit card</h5>
+													</div>
+													<div class="form mt-3">
+														<div class="inputbox">
+															<input type="text" name="name" class="form-control" required="required">
+															<span>Cardholder Name</span>
+														</div>
+														<div class="inputbox">
+															<input type="text" name="name" min="1" max="999" class="form-control" required="required">
+															<span>Card Number</span>
+															<i class="fa fa-eye"></i>
+														</div>
+														<div class="d-flex flex-row">
+															<div class="inputbox">
+																<input type="text" name="name" min="1" max="999" class="form-control" required="required">
+																<span>Expiration Date</span>
+															</div>
+															<div class="inputbox">
+																<input type="text" name="name" min="1" max="999" class="form-control" required="required">
+																<span>CVV</span>
+															</div>
+														</div>
+														<div class="px-5 pay">
+															<button class="btn btn-success btn-block">Add card</button>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane fade show" id="paypalContent" role="tabpanel" aria-labelledby="paypal-part">
+
+
+												<div class="px-5 mt-5">
+													<div class="inputbox">
+														<input type="text" name="name" class="form-control" required="required">
+														<span>Paypal Email Address</span>
+													</div>
+													<div class="pay px-5">
+														<button class="btn btn-primary btn-block">Add paypal</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</main>
+
+			{% endblock %}
