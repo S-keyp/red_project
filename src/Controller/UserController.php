@@ -98,18 +98,15 @@ class UserController extends AbstractController
 
 
     #[Route("/professional/ajoutpresta", name: "fichepro")]
-    public function FicheBundle(EntityManagerInterface $entityManager, Request $request, User $user): Response
+    public function FicheBundle(EntityManagerInterface $entityManager, Request $request): Response
     {
         $ficheBundle = new ProBundles();
         $form = $this->createForm(ProBundlesType::class, $ficheBundle);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $ficheBundle->set($user);
             /*$uploadedFile = $form['image_service']->getData();*/
             $entityManager->persist($ficheBundle);
             $entityManager->flush();
-
-            return $this->redirectToRoute('professional', ['slug' => $user->getSlug()]);
         }
          return $this->render('formulaires/bundleform.html.twig', [
             'fichebundle' => $ficheBundle,
