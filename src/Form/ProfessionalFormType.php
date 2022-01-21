@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Professional;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -20,7 +20,7 @@ class ProfessionalFormType extends AbstractType
         $builder
             ->add('username', TextType::class, [
                 'label' => 'Username'
-            ])->add('mail', EmailType::class, [
+            ])->add('email', EmailType::class, [
                 'label' => 'Email'
             ])->add('password', PasswordType::class, [
                 'label' => 'Mot de passe'
@@ -38,7 +38,7 @@ class ProfessionalFormType extends AbstractType
                 'label' => 'Nom de l\'entreprise'
             ])->add('description', TextType::class, [
                 'label' => 'Description'
-            ])->add('country', TextType::class, [
+            ])->add('country', TextType::class, [       /* Ajouter role user + pro automatiquement */
                 'label' => 'Pays'
             ])->add('code_postal', IntegerType::class, [
                 'label' => 'Code postal'
@@ -51,7 +51,7 @@ class ProfessionalFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Professional::class,
+            'data_class' => User::class,
         ]);
     }
 }
