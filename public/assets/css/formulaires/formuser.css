@@ -1,5 +1,5 @@
 #user_form_save {
-  background: #D64933;
+  background: #2B303A;
   border-radius: 5px;
 }
 
@@ -27,8 +27,9 @@
     background-color: #eee
 } */
 .buttonpay {
-  background: #8bbafe;
-  border-radius: 2rem;
+  background: #D64933;
+  color: white;
+  border-radius: 0.5rem;
 }
 
 .launch {
