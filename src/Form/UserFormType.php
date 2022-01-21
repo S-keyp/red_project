@@ -29,8 +29,8 @@ class UserFormType extends AbstractType
                 'label' => 'Prénom'
             ])->add('tel', TelType::class, [
                 'label' => 'Téléphone'
-            ])->add('profile_picture', TextType::class, [
-                'label' => 'Photo de profil'
+            // ])->add('profile_picture', TextType::class, [
+            //     'label' => 'Photo de profil'
             ])->add('email', EmailType::class, [
                 'label' => 'Email'
             ])->add('adress', TextType::class, [

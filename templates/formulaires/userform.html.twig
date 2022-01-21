@@ -63,12 +63,10 @@
 
 <hr class="my-4">
 
-        {{  form_row(form_user.save) }}
+        {{ form_row(form_user.save) }}
         
-
-
-
 </div>
+        {{ form_end(form_user)  }}
 
 
 
@@ -80,11 +78,11 @@
                 <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
                 <div class="tabs mt-3">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> <img src="https://i.imgur.com/sB4jftM.png" width="80"> </a> </li>
-                        <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="cardsBtn" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> <img src="https://i.imgur.com/sB4jftM.png" width="80"> </a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="paypalBtn" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                        <div class="tab-pane fade show active" id="cardsContent" role="tabpanel" aria-labelledby="visa-tab">
                             <div class="mt-4 mx-4">
                                 <div class="text-center">
                                     <h5>Credit card</h5>
@@ -100,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade show" id="paypal" role="tabpanel" aria-labelledby="paypal">
+                        <div class="tab-pane fade show" id="paypalContent" role="tabpanel" aria-labelledby="paypal">
                             <div class="px-5 mt-5">
                                 <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"> <span>Paypal Email Address</span> </div>
                                 <div class="pay px-5"> <button class="btn btn-primary btn-block">Add paypal</button> </div>
