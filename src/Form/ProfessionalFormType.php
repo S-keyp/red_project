@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -45,8 +46,17 @@ class ProfessionalFormType extends AbstractType
                 'label' => 'Pays'
             ])->add('code_postal', IntegerType::class, [
                 'label' => 'Code postal'
-            ])->add('prestation', IntegerType::class, [  /* Un integer ne convient pas pour plusieurs prestation */
-                'label' => 'Type de prestation'
+            ])->add('profile_picture', TextType::class, [
+                'label' => 'Photo de profil'
+            ])->add('prestation', ChoiceType::class, [
+                'label' => 'Prestation',
+                'choices' => [
+                    'English' => 'en',
+                    'Spanish' => 'es',
+                    'Bork' => 'muppets',
+                    'Pirate' => 'arr',
+                ],
+                'preferred_choices' => ['muppets', 'arr'],
             ])->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'
             ]);
