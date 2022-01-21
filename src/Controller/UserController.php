@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\ProBundles;
 use App\Entity\User;
+use App\Form\ProBundlesType;
 use App\Form\ProfessionalFormType;
 use App\Form\UserFormType;
 use App\Repository\ProBundlesRepository;
@@ -34,12 +36,12 @@ class UserController extends AbstractController
             $entityManager->flush();
         }
         return $this->render('formulaires/userform.html.twig', [
-            'user'=>$user,
+            'user' => $user,
             'form_user' => $form->createView()
         ]);
     }
 
-    
+
     #[Route('/professional', name: 'professional')]
     public function indexPro(): Response
     {
@@ -51,27 +53,38 @@ class UserController extends AbstractController
     }
 
     #[Route('/professional/searchresults', name: 'professionalsearch')]
-    public function search(Request $request, ProBundlesRepository $proFiche, UserRepository $basePro): Response
+    public function search(Request $request, ProBundlesRepository $proFiche, UserRepository $users): Response
     {
+
         if ($request->isMethod('post')) {
             $searchCriteria = $request->request->all();
         }
 
-        /*Paramètrage de la recherche*/
-
+        /*Paramètrage de la recherche query builder */
         $searchResults = $proFiche->createQueryBuilder('f')
-            ->select('f.servicePrice');
+            ->select('f.servicePrice, f.serviceCategory, f.Professionnal, f.descriptionService');
         if ($searchCriteria['order']) {
             $searchResults->orderBy('f.servicePrice', $searchCriteria['order']);
+        } else if ($searchCriteria['metier']) {
+            $searchResults->where('f.serviceCategory = ' . $searchCriteria['metier']);
         }
+
+        /*Récupération des résultats*/
         $query = $searchResults->getQuery();
+
+        //Load variable qui stocke les users
+        $res = $query->execute();
+        for ($i = 0; $i < count($res); $i++) {
+            $res[$i]['serviceCategory'] = $proFiche->getJob($res[$i]['serviceCategory']);
+            $res[$i]['name'] = $users->fetchById($res[$i]['Professionnal']);
+        }
 
 
 
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
             'search' => $searchCriteria,
-            'searchResults' => $query->execute()
+            'searchResults' => $res
         ]);
     }
 
@@ -95,13 +108,22 @@ class UserController extends AbstractController
 
 
 
-    #[Route("professional/fiche", name: "fichepro")]
-    public function FichePro(Request $request): Response
+    #[Route("/professional/ajoutpresta", name: "fichepro")]
+    public function FicheBundle(EntityManagerInterface $entityManager, Request $request,User $user): Response
     {
-        return $this->render('professional/profiche.html.twig', [
-            'controller_name' => 'ProfessionalController',
-            'search' => ''
+        $ficheBundle = new ProBundles();
+        $form = $this->createForm(ProBundlesType::class, $ficheBundle);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            /*$uploadedFile = $form['image_service']->getData();*/
+            echo $form['titleService'];
+            $entityManager->persist($ficheBundle);
+            $entityManager->flush();
+        }
+         return $this->render('formulaires/bundleform.html.twig', [
+            'fichebundle' => $ficheBundle,
+            'form_probundles' => $form->createView()
         ]);
     }
+    
 }
-

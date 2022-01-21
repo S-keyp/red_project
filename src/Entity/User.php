@@ -57,10 +57,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 90)]
     private $email;
 
-    #[ORM\Column(type: 'integer', nullable: false)]
+    #[ORM\Column(type: 'string', nullable: true)]
     private $prestation;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->roles[] = "ROLE_USER";
     }
 
@@ -194,8 +195,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function __toString(): string{
-        return $this->firstname . ' ' . $this->lastname;
+    public function __toString(): string
+    {
+        return $this->firstname . ' ' . $this->lastname . ',' . $this->country;
     }
 
     public function getSiret(): ?int
@@ -270,12 +272,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPrestation(): ?int
+    public function getPrestation(): ?string
     {
         return $this->prestation;
     }
 
-    public function setPrestation(?int $prestation): self
+    public function setPrestation(?string $prestation): self
     {
         $this->prestation = $prestation;
 

@@ -19,6 +19,24 @@ class ProBundlesRepository extends ServiceEntityRepository
         parent::__construct($registry, ProBundles::class);
     }
 
+    /* ENUMERATEUR RECUPERATION EN BASE*/
+    /**
+     * GetJob Permettant de récupérer le nom du job suivant l'id donnée.
+     *
+     * @param [type] $id associé au job à récupérer
+     * @return string Job
+     */
+
+    public function getJob($id)
+    {
+        $Job = [
+            1 => 'Graphiste',
+            2 => 'Développeur',
+            3 => 'Référencement'
+        ];
+        return $Job[$id];
+    }
+
     // /**
     //  * @return ProBundles[] Returns an array of ProBundles objects
     //  */
