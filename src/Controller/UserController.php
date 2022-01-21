@@ -67,6 +67,7 @@ class UserController extends AbstractController
         $query = $searchResults->getQuery();
 
 
+
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
             'search' => $searchCriteria,

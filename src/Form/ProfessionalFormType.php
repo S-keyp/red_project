@@ -45,6 +45,8 @@ class ProfessionalFormType extends AbstractType
                 'label' => 'Pays'
             ])->add('code_postal', IntegerType::class, [
                 'label' => 'Code postal'
+            ])->add('prestation', IntegerType::class, [  /* Un integer ne convient pas pour plusieurs prestation */
+                'label' => 'Type de prestation'
             ])->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'
             ]);

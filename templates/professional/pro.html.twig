@@ -96,7 +96,7 @@
 			<div class="imageWithName">
 				<img src="/assets/img/pro/defaultpro.png" alt="" srcset="">
 				<div class="detailedProfile">
-					<span class="etiq etiqGraph">Graphiste</span>
+					<span class="etiq etiqGraph">{{user.prestation}}</span>
 					<p class="nameDetails">
 						José<br>
 						21 ans<br>
@@ -128,8 +128,8 @@
 	{% if searchResults %}
 
 		<ul>
-			{% for results in searchResults %}
-				<li>{{ results.servicePrice }}</li>
+			{% for result in searchResults %}
+				<li>{{ result.servicePrice }}</li>
 			{% endfor %}
 		</ul>
 	{% endif %}
