@@ -24,9 +24,9 @@ class UserFormType extends AbstractType
             ])->add('password', PasswordType::class, [
                 'label' => 'password'
             ])->add('firstname', TextType::class, [
-                'label' => 'Prénom'
-            ])->add('lastname', TextType::class, [
                 'label' => 'Nom'
+            ])->add('lastname', TextType::class, [
+                'label' => 'Prénom'
             ])->add('tel', TelType::class, [
                 'label' => 'Téléphone'
             ])->add('profile_picture', TextType::class, [
