@@ -109,7 +109,7 @@ class UserController extends AbstractController
 
 
     #[Route("/professional/ajoutpresta", name: "fichepro")]
-    public function FicheBundle(EntityManagerInterface $entityManager, Request $request,User $user): Response
+    public function FicheBundle(EntityManagerInterface $entityManager, Request $request): Response
     {
         $ficheBundle = new ProBundles();
         $form = $this->createForm(ProBundlesType::class, $ficheBundle);
