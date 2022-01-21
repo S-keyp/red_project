@@ -27,15 +27,7 @@ class ProBundlesRepository extends ServiceEntityRepository
      * @return string Job
      */
 
-    public function getJob($id)
-    {
-        $Job = [
-            1 => 'Graphiste',
-            2 => 'Développeur',
-            3 => 'Référencement'
-        ];
-        return $Job[$id];
-    }
+
 
     // /**
     //  * @return ProBundles[] Returns an array of ProBundles objects
