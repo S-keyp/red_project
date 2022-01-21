@@ -6,6 +6,7 @@
     flex-direction: column;
     background-size: cover;
     background-position: top;
+    margin-bottom: 3.5rem;
 }
 
 .titleBrand{
@@ -24,6 +25,7 @@
 .beforeBrandWave{
     position: absolute;
     top: 530px;
+    text-decoration: underline;
     text-align: center;
     color: #262626;
     right: 0;
@@ -60,5 +62,8 @@
 }
 .row .presta{
     margin: 20px;
+}
+.row .prestation{
+    
 }
 

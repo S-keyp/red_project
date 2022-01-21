@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\ProBundles;
 use App\Entity\User;
+use App\Form\ProBundlesType;
 use App\Form\ProfessionalFormType;
 use App\Form\UserFormType;
 use App\Repository\ProBundlesRepository;
@@ -94,13 +96,24 @@ class UserController extends AbstractController
 
 
 
-    #[Route("professional/fiche", name: "fichepro")]
-    public function FichePro(Request $request): Response
+    #[Route("/professional/fiche", name: "fichepro")]
+    public function FicheBundle(EntityManagerInterface $entityManager, Request $request): Response
     {
-        return $this->render('professional/profiche.html.twig', [
-            'controller_name' => 'ProfessionalController',
-            'search' => ''
+        $ficheBundle = new ProBundles();
+        $form = $this->createForm(ProBundlesType::class, $ficheBundle);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            /*$uploadedFile = $form['image_service']->getData();*/
+        
+            $entityManager->persist($ficheBundle);
+            $entityManager->flush();
+        }
+         return $this->render('formulaires/bundleform.html.twig', [
+            'fichebundle' => $ficheBundle,
+            'form' => $form->createView()
         ]);
     }
+    
 }
 
