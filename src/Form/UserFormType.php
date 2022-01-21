@@ -27,26 +27,18 @@ class UserFormType extends AbstractType
                 'label' => 'Prénom'
             ])->add('lastname', TextType::class, [
                 'label' => 'Nom'
-            ])->add('adress', TextType::class, [
-                'label' => 'Adresse'
             ])->add('tel', TelType::class, [
                 'label' => 'Téléphone'
             ])->add('profile_picture', TextType::class, [
                 'label' => 'Photo de profil'
             ])->add('email', EmailType::class, [
                 'label' => 'Email'
-            ])->add('siret', TextType::class, [
-                'label' => 'Siret'
-            ])->add('society_name', TextType::class, [
-                'label' => 'Nom de l\'entreprise'
-            ])->add('description', TextType::class, [
-                'label' => 'Description'
+            ])->add('adress', TextType::class, [
+                'label' => 'Adresse'
             ])->add('country', TextType::class, [
                 'label' => 'Pays'
             ])->add('code_postal', IntegerType::class, [
                 'label' => 'Code postal'
-            ])->add('prestation', IntegerType::class, [
-                'label' => 'Prestation'
             ])->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'
             ])
