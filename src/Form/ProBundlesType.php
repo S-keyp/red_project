@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\FloatType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType as TypeTextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,6 +27,8 @@ class ProBundlesType extends AbstractType
                 'label' => 'Télecharger une image'
             ])->add('servicePrice', NumberType::class,[
                 'label' => 'Prix de la prestation'
+            ])->add('save', SubmitType::class,[
+                'label' => 'Ajouter'
             ])
         ;
     }

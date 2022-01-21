@@ -57,13 +57,12 @@
 .texte{
     font-size: 1.5rem;
 }
-.btn{
-    background-color: #262626;
-}
+
 .row .presta{
     margin: 20px;
 }
 .row .prestation{
-    
+    margin: 20px;
+    background-color: white;
 }
 
