@@ -34,6 +34,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($user);
             $entityManager->flush();
+            return $this->redirectToRoute('homepage');
         }
         return $this->render('formulaires/userform.html.twig', [
             'user' => $user,
@@ -88,8 +89,6 @@ class UserController extends AbstractController
         ]);
     }
 
-
-
     #[Route("/professional/new", name: "proform")]
     public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -97,16 +96,17 @@ class UserController extends AbstractController
         $form = $this->createForm(ProfessionalFormType::class, $professional);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $professional->setRoles(['ROLE_PRO']);
             $entityManager->persist($professional);
             $entityManager->flush();
+
+            return $this->redirectToRoute('homepage');
         }
         return $this->render('formulaires/proform.html.twig', [
             'professional' => $professional,
             'form_professional' => $form->createView()
         ]);
     }
-
-
 
     #[Route("/professional/ajoutpresta", name: "fichepro")]
     public function FicheBundle(EntityManagerInterface $entityManager, Request $request): Response
