@@ -11,17 +11,23 @@
 {% block body %}
 
 <main>
-    <div class="py-5 text-center mt-5">
-        <h1>Inscription professionnel</h1>
-        <p class="lead">Veuillez compléter le formulaire professionnel ci-dessous afin d'enregistrer vos informations.</p>
-    </div>
+    {% if app.user %}
+        <div class="py-5 text-center mt-5">
+            <h1>Modifier votre compte professionnel</h1>
+        </div>
+    {% else %}
+        <div class="py-5 text-center mt-5">
+            <h1>Inscription professionnel</h1>
+            <p class="lead">Veuillez compléter le formulaire professionnel ci-dessous afin d'enregistrer vos informations.</p>
+        </div>
+    {% endif %}
     
 <div class="container">
     <div class="row background">
         {{ form_start(form_professional, {
             'attr': {
                 'novalidate': 'novalidate',
-                    'class': 'col-lg-5' 
+                    'class': 'col-lg-5 mx-auto w-100' 
                         }
                     })
                 }}
@@ -31,34 +37,43 @@
         {{  form_row(form_professional.firstname) }}
         {{  form_row(form_professional.society_name) }}
     </div>
-<div class="col-6">       
-        {{  form_row(form_professional.lastname) }}
-        {{  form_row(form_professional.siret) }}
-</div>
+    <div class="col-6">       
+            {{  form_row(form_professional.lastname) }}
+            {{  form_row(form_professional.siret) }}
+    </div>
         {{  form_row(form_professional.adress) }}    
-<div class="row">
-    <div class="col-6">
-        {{  form_row(form_professional.code_postal) }}
-        {{  form_row(form_professional.tel) }}
-    </div>
-    <div class="col-6">
-        {{  form_row(form_professional.country) }}
+    <div class="row">
+        
+        <div class="col-6">
+            {{  form_row(form_professional.code_postal) }}
+            {{  form_row(form_professional.tel) }}
+            {{  form_row(form_professional.country) }}
+        </div>
+
+        <div class="col-6">
+            {{  form_row(form_professional.description) }}
+            {{  form_row(form_professional.profile_picture) }}
+        </div>
     </div>
 
-<hr class="my-4">
+    <hr class="my-4">
+    <div class="row">
+        <div class="col-6">
+            {{  form_row(form_professional.username) }}
+        </div>
 
-        {{  form_row(form_professional.email) }}
+        <div class="col-6">
+            {{  form_row(form_professional.email) }}
+        </div>
+
         {{  form_row(form_professional.password) }}
+    </div>
 
-<hr class="my-4">
+    <hr class="my-4">
 
-        {{  form_row(form_professional.prestation) }}
-        
-<hr class="my-4">
-
-        {{  form_row(form_professional.save) }}
-        
-</div>
+    {{  form_row(form_professional.save) }}
+    
+    {{form_end(form_professional)}}
 </main>
 
 

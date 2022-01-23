@@ -16,10 +16,17 @@
 {% block body %}
 	<script src="/assets/js/toggler.js"></script>
 	<main>
-		<div class="py-5 text-center mt-5">
+    {% if app.user %}
+        <div class="py-5 text-center mt-5">
+            <h1>Modifier votre compte utilisateur</h1>
+        </div>
+    {% else %}
+        <div class="py-5 text-center mt-5">
 			<h1>Inscription utilisateur</h1>
 			<p class="lead">Veuillez compléter le formulaire utilisateur ci-dessous afin d'enregistrer vos informations.</p>
 		</div>
+    {% endif %}
+		
 
 		<div class="container">
 			<div class="row background">

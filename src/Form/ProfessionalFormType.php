@@ -20,9 +20,11 @@ class ProfessionalFormType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
-                'label' => 'Username'
+                'label' => 'Username',
+                'attr' => ['class'=>'col-6'],
             ])->add('email', EmailType::class, [
-                'label' => 'Email'
+                'label' => 'Email',
+                'attr' => ['class'=>'col-6'],
             ])->add('password', PasswordType::class, [
                 'label' => 'Mot de passe'
             ])->add('firstname', TextType::class, [
@@ -45,8 +47,6 @@ class ProfessionalFormType extends AbstractType
                 'label' => 'Code postal'
             ])->add('profile_picture', TextType::class, [
                 'label' => 'Photo de profil'
-            ])->add('prestation', TextType::class, [     /* Modifier l'ajout en tableau ou json */
-                'label' => 'Prestation',
             ])->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'
             ]);
