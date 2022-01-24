@@ -179,7 +179,8 @@ class UserController extends AbstractController
             'text' => 'Voici les packs de ce professionel:',
             'user' => $user,
             'fichebundle' => $ficheBundle,
-            'form_probundles' => $form->createView()
+            'form_probundles' => $form->createView(),
+            'bundles' => '',
         ]);
     }
 
