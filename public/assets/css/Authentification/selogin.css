@@ -1,0 +1,17 @@
+.container {
+    background: #2b303a;
+    border-radius: 8px;
+    box-shadow: 3px 3px 3px 2px black;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.valid {
+    border: none!important;
+    background: #d64933!important;
+    box-shadow: 2px 2px 2px 1px black;
+}
+
+label {
+    color: white!important;
+}
