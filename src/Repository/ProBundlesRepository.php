@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\ProBundles;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -36,6 +37,10 @@ class ProBundlesRepository extends ServiceEntityRepository
         ];
         return $Job[$id];
     }
+
+
+
+
 
     // /**
     //  * @return ProBundles[] Returns an array of ProBundles objects

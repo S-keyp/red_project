@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\ProBundles;
 use App\Entity\User;
 use App\Form\ProBundlesType;
@@ -34,7 +35,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($user);
             $entityManager->flush();
-            return $this->redirectToRoute('modify_user', ['id'=>$user->getId()]);
+            return $this->redirectToRoute('modify_user', ['id' => $user->getId()]);
         }
         return $this->render('formulaires/userform.html.twig', [
             'user' => $user,
@@ -43,7 +44,7 @@ class UserController extends AbstractController
     }
 
     /* permet de réafficher la page d'un utilisateur pour modification */
-    #[Route("/user/modify/{id}", name:"modify_user")]
+    #[Route("/user/modify/{id}", name: "modify_user")]
     public function modifyUser(User $user, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(UserFormType::class, $user);
@@ -52,7 +53,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('modify_user', ['id'=>$user->getId()]);
+            return $this->redirectToRoute('modify_user', ['id' => $user->getId()]);
         }
         return $this->render('formulaires/userform.html.twig', [
             'user' => $user,
@@ -75,21 +76,29 @@ class UserController extends AbstractController
     public function search(Request $request, ProBundlesRepository $proFiche, UserRepository $users): Response
     {
 
-        if ($request->isMethod('post')) {
-            $searchCriteria = $request->request->all();
-        }
+        //Elements par pages
 
+        $searchCriteria = "";
         /*Paramètrage de la recherche query builder */
         $searchResults = $proFiche->createQueryBuilder('f')
             ->select('f.servicePrice, f.serviceCategory, f.Professionnal, f.descriptionService');
-        if ($searchCriteria['order']) {
-            $searchResults->orderBy('f.servicePrice', $searchCriteria['order']);
-        } else if ($searchCriteria['metier']) {
-            $searchResults->where('f.serviceCategory = ' . $searchCriteria['metier']);
+
+        if ($request->isMethod('post')) {
+            $searchCriteria = $request->request->all();
+            if ($searchCriteria['order'] != "") {
+                $searchResults->orderBy('f.servicePrice', $searchCriteria['order']);
+            }
+
+            if ($searchCriteria['metier']) {
+                $searchResults->where('f.serviceCategory = ' . $searchCriteria['metier']);
+            }
         }
 
+
+
         /*Récupération des résultats*/
-        $query = $searchResults->getQuery();
+        $query = $searchResults
+            ->getQuery();
 
         //Load variable qui stocke les users
         $res = $query->execute();
@@ -97,6 +106,7 @@ class UserController extends AbstractController
             $res[$i]['serviceCategory'] = $proFiche->getJob($res[$i]['serviceCategory']);
             $res[$i]['name'] = $users->fetchById($res[$i]['Professionnal']);
         }
+
 
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
@@ -112,11 +122,11 @@ class UserController extends AbstractController
         $form = $this->createForm(ProfessionalFormType::class, $professional);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $professional->setRoles(['ROLE_PRO','ROLE_USER']);
+            $professional->setRoles(['ROLE_PRO', 'ROLE_USER']);
             $entityManager->persist($professional);
             $entityManager->flush();
 
-            return $this->redirectToRoute('modify_pro', ['id'=>$professional->getId()]);
+            return $this->redirectToRoute('modify_pro', ['id' => $professional->getId()]);
         }
         return $this->render('formulaires/proform.html.twig', [
             'professional' => $professional,
@@ -126,7 +136,7 @@ class UserController extends AbstractController
 
 
     /* permet de réafficher la page d'un pro pour modification */
-    #[Route("/professional/modify/{id}", name:"modify_pro")]
+    #[Route("/professional/modify/{id}", name: "modify_pro")]
     public function modifyPro(User $user, Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ProfessionalFormType::class, $user);
@@ -135,7 +145,7 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('modify_pro', ['id'=>$user->getId()]);
+            return $this->redirectToRoute('modify_pro', ['id' => $user->getId()]);
         }
         return $this->render('formulaires/proform.html.twig', [
             'professional' => $user,
@@ -151,14 +161,13 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             /*$uploadedFile = $form['image_service']->getData();*/
-            
+
             $entityManager->persist($ficheBundle);
             $entityManager->flush();
         }
-         return $this->render('formulaires/bundleform.html.twig', [
+        return $this->render('formulaires/bundleform.html.twig', [
             'fichebundle' => $ficheBundle,
             'form_probundles' => $form->createView()
         ]);
     }
-    
 }
