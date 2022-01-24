@@ -41,22 +41,19 @@ class ProBundlesRepository extends ServiceEntityRepository
 
 
 
-    // /**
-    //  * @return ProBundles[] Returns an array of ProBundles objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return ProBundles[] Returns an array of ProBundles objects
+     */
+    public function findById($id)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
+            ->andWhere('p.id = :id')
+            ->setParameter('id', $id)
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?ProBundles
