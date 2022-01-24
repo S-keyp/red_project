@@ -95,7 +95,6 @@ class UserController extends AbstractController
         }
 
 
-
         /*Récupération des résultats*/
         $query = $searchResults
             ->getQuery();
@@ -201,14 +200,14 @@ class UserController extends AbstractController
 
             $this->addFlash('success', 'bien envoyé');
 
-            return $this->redirectToRoute('modifyfichepro', ['id' => $user->getId()] );
+            return $this->redirectToRoute('modifyfichepro', ['id' => $user->getId()]);
         }
-        $bundles ="";
-        $bundles = $proBundlesRepository->findBy(['Professionnal'=> $user->getId()]);
+        $bundles = "";
+        $bundles = $proBundlesRepository->findBy(['Professionnal' => $user->getId()]);
         return $this->render('formulaires/bundleform.html.twig', [
             'fichebundle' => $ficheBundle,
             'form_probundles' => $form->createView(),
-            'bundles'=> $bundles,
+            'bundles' => $bundles,
         ]);
     }
 }
