@@ -210,9 +210,11 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('modifyfichepro', ['id' => $user->getId()]);
         }
+
         $bundles = "";
         $bundles = $proBundlesRepository->findBy(['Professionnal' => $user->getId()]);
-        return $this->render('formulaires/bundleform.html.twig', [
+
+        return $this->render('formulaires/bundleform_display_modify.html.twig', [
             'fichebundle' => $ficheBundle,
             'form_probundles' => $form->createView(),
             'bundles' => $bundles,
