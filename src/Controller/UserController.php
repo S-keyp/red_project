@@ -142,7 +142,7 @@ class UserController extends AbstractController
             'form_professional' => $form->createView()
         ]);
     }
-
+     //Méthode pour ajouter une prestation pour le pro
     #[Route("/professional/ajoutpresta", name: "fichepro")]
     public function FicheBundle(EntityManagerInterface $entityManager, Request $request): Response
     {
