@@ -50,6 +50,13 @@ h1 {
     box-shadow: 2px 2px 2px 1px black;
 }
 
+.btn-success {
+  color: #fff;
+  background-color: #198754;
+  border-color: #198754;
+  box-shadow: 2px 2px 2px 1px black;
+}
+
 .launch {
   height: 50px;
 }
