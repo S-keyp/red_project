@@ -96,7 +96,7 @@
 					</p>
 
 
-					<a href="" class="gotoProfile">Voir toutes les prestations</a>
+					<a href="/professional/{{results.Professionnal}}" class="gotoProfile">Voir toutes les prestations</a>
 
 
 				</div>
@@ -104,8 +104,12 @@
 			</div>
 		{% endfor %}
 
-		{{ knp_pagination_render(searchResults) }}
-
 
 	{% endif %}
-</div>{% endblock %}
+</div>
+
+{% if searchResults %}
+
+
+	{{ knp_pagination_render(searchResults) }}
+{% endif %}{% endblock %}

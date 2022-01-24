@@ -89,7 +89,6 @@ class UserController extends AbstractController
             if ($request->get('order')) {
                 $searchResults->orderBy('f.servicePrice', $request->get('order'));
             }
-
             if ($request->get('metier')) {
                 $searchResults->where('f.serviceCategory = ' . $request->get('metier'));
             }
