@@ -95,7 +95,6 @@ class UserController extends AbstractController
             }
         }
 
-
         /*Récupération des résultats*/
         $query = $searchResults
             ->getQuery();
