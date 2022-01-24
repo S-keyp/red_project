@@ -11,6 +11,7 @@ use App\Form\UserFormType;
 use App\Repository\ProBundlesRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -95,7 +96,6 @@ class UserController extends AbstractController
         }
 
 
-
         /*Récupération des résultats*/
         $query = $searchResults
             ->getQuery();
@@ -153,15 +153,15 @@ class UserController extends AbstractController
         ]);
     }
 
-    
-    #[Route("/professional/{id}", name:"fichepro")]
+
+    #[Route("/professional/{id}", name: "fichepro")]
     public function show(User $user, ProBundlesRepository $proBundlesRepository, Request $request): Response
     {
         $offset = max(0, $request->query->getInt('offset', 0));
         $paginator = $proBundlesRepository->getBundlesPaginator($user, $offset);
 
         return $this->render('conference/show.html.twig', [
-            'title' => "Vous voici sur la page de la conférence ". $user,
+            'title' => "Vous voici sur la page de la conférence " . $user,
             'text' => 'Voici les packs de ce professionel:',
             'user' => $user,
             'comments' => $paginator,
