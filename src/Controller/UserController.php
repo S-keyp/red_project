@@ -162,7 +162,7 @@ class UserController extends AbstractController
 
     /* Quelqu'un qui est redirigé depuis la page des résultats ici */
     #[Route("/professional/{id}", name: "fichepro")]
-    public function show(User $user, EntityManagerInterface $entityManager, Request $request): Response
+    public function show(User $user, EntityManagerInterface $entityManager, Request $request, ProBundlesRepository $proBundlesRepository): Response
     {
         $ficheBundle = new ProBundles();
         $form = $this->createForm(ProBundlesType::class, $ficheBundle);
@@ -174,13 +174,16 @@ class UserController extends AbstractController
             $entityManager->flush();
         }
 
+        $bundles = "";
+        $bundles = $proBundlesRepository->findBy(['Professionnal' => $user->getId()]);
+
         return $this->render('formulaires/bundleform.html.twig', [
             'title' => "Vous voici sur la page de la conférence " . $user,
             'text' => 'Voici les packs de ce professionel:',
             'user' => $user,
             'fichebundle' => $ficheBundle,
             'form_probundles' => $form->createView(),
-            'bundles' => '',
+            'bundles' => $bundles,
         ]);
     }
 
@@ -199,8 +202,6 @@ class UserController extends AbstractController
             $entityManager->persist($ficheBundle);
             $entityManager->flush();
 
-            $this->addFlash('success', 'bien envoyé');
-
             return $this->redirectToRoute('modifyfichepro', ['id' => $user->getId()]);
         }
         $bundles = "";
@@ -209,6 +210,7 @@ class UserController extends AbstractController
             'fichebundle' => $ficheBundle,
             'form_probundles' => $form->createView(),
             'bundles' => $bundles,
+            'user' => $user,
         ]);
     }
 }
