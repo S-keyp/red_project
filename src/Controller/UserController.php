@@ -31,12 +31,14 @@ class UserController extends AbstractController
     }
 
     #[Route("/user/new", name: "userform")]
-    public function FormulaireUser(Request $request, EntityManagerInterface $entityManager): Response
+    public function FormulaireUser(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passhash): Response
     {
         $user = new User();
         $form = $this->createForm(UserFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword($passhash->hashPassword($user, $user->getPassword()));
+
             $entityManager->persist($user);
             $entityManager->flush();
             return $this->redirectToRoute('modify_user', ['id' => $user->getId()]);
