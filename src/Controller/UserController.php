@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
@@ -78,13 +79,13 @@ class UserController extends AbstractController
     {
 
         //Elements par pages
-
         $searchCriteria = "";
         /*Paramètrage de la recherche query builder */
         $searchResults = $proFiche->createQueryBuilder('f')
             ->select('f.servicePrice, f.serviceCategory, f.Professionnal, f.descriptionService');
 
         if ($request->isMethod('get')) {
+
             $searchCriteria = $request->request->all();
             if ($request->get('order')) {
                 $searchResults->orderBy('f.servicePrice', $request->get('order'));
@@ -122,17 +123,20 @@ class UserController extends AbstractController
     }
 
     #[Route("/professional/new", name: "proform")]
-    public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
+    public function FormulairePro(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passhash): Response
     {
         $professional = new User();
         $form = $this->createForm(ProfessionalFormType::class, $professional);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $professional->setRoles(['ROLE_PRO', 'ROLE_USER']);
+            $professional->setPassword($passhash->hashPassword($professional, $professional->getPassword()));
             $entityManager->persist($professional);
+
+
             $entityManager->flush();
 
-            return $this->redirectToRoute('modify_pro', ['id' => $professional->getId()]);
+            // return $this->redirectToRoute('modify_pro', ['id' => $professional->getId()]);
         }
         return $this->render('formulaires/proform.html.twig', [
             'professional' => $professional,
