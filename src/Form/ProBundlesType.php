@@ -21,8 +21,6 @@ class ProBundlesType extends AbstractType
                 'label' => 'Nom de la Prestation'
             ])->add('descriptionService', TypeTextType::class,[
                 'label' => 'Description Prestation'
-            ])->add('Professionnal', TypeTextType::class,[
-                'label' => 'Nom du Professionnel'
             ])->add('image_service', FileType::class,[
                 'label' => 'Télecharger une image',
                 'required' =>false
@@ -30,7 +28,7 @@ class ProBundlesType extends AbstractType
                 'label' => 'Prix de la prestation'
             ])->add('serviceCategory', ChoiceType::class,[
                 'label' => 'Choix Catégorie',
-                'choices' => ['Graphiste' => 'Graphiste' , 'Développement Web' =>'Développement', 'Référencement' => 'Réferencement']
+                'choices' => ['Graphiste' => '1' , 'Développement Web' =>'2', 'Référencement' => '3']
             ])->add('save', SubmitType::class,[
                 'label' => 'Ajouter'
             ])
