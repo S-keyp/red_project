@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
@@ -80,13 +81,13 @@ class UserController extends AbstractController
     {
 
         //Elements par pages
-
         $searchCriteria = "";
         /*Paramètrage de la recherche query builder */
         $searchResults = $proFiche->createQueryBuilder('f')
             ->select('f.servicePrice, f.serviceCategory, f.Professionnal, f.descriptionService');
 
         if ($request->isMethod('get')) {
+
             $searchCriteria = $request->request->all();
             if ($request->get('order')) {
                 $searchResults->orderBy('f.servicePrice', $request->get('order'));
@@ -124,17 +125,20 @@ class UserController extends AbstractController
     }
 
     #[Route("/professional/new", name: "proform")]
-    public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
+    public function FormulairePro(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passhash): Response
     {
         $professional = new User();
         $form = $this->createForm(ProfessionalFormType::class, $professional);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $professional->setRoles(['ROLE_PRO', 'ROLE_USER']);
+            $professional->setPassword($passhash->hashPassword($professional, $professional->getPassword()));
             $entityManager->persist($professional);
+
+
             $entityManager->flush();
 
-            return $this->redirectToRoute('modify_pro', ['id' => $professional->getId()]);
+            // return $this->redirectToRoute('modify_pro', ['id' => $professional->getId()]);
         }
         return $this->render('formulaires/proform.html.twig', [
             'professional' => $professional,
@@ -164,7 +168,7 @@ class UserController extends AbstractController
 
     /* Quelqu'un qui est redirigé depuis la page des résultats ici */
     #[Route("/professional/{id}", name: "fichepro")]
-    public function show(User $user, EntityManagerInterface $entityManager, Request $request): Response
+    public function show(User $user, EntityManagerInterface $entityManager, Request $request, ProBundlesRepository $proBundlesRepository): Response
     {
         $ficheBundle = new ProBundles();
         $form = $this->createForm(ProBundlesType::class, $ficheBundle);
@@ -176,13 +180,16 @@ class UserController extends AbstractController
             $entityManager->flush();
         }
 
+        $bundles = "";
+        $bundles = $proBundlesRepository->findBy(['Professionnal' => $user->getId()]);
+
         return $this->render('formulaires/bundleform.html.twig', [
             'title' => "Vous voici sur la page de la conférence " . $user,
             'text' => 'Voici les packs de ce professionel:',
             'user' => $user,
             'fichebundle' => $ficheBundle,
             'form_probundles' => $form->createView(),
-            'bundles' => '',
+            'bundles' => $bundles,
         ]);
     }
 
@@ -201,8 +208,6 @@ class UserController extends AbstractController
             $entityManager->persist($ficheBundle);
             $entityManager->flush();
 
-            $this->addFlash('success', 'bien envoyé');
-
             return $this->redirectToRoute('modifyfichepro', ['id' => $user->getId()]);
         }
         $bundles = "";
@@ -211,6 +216,7 @@ class UserController extends AbstractController
             'fichebundle' => $ficheBundle,
             'form_probundles' => $form->createView(),
             'bundles' => $bundles,
+            'user' => $user,
         ]);
     }
 }
