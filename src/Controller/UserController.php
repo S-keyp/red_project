@@ -34,6 +34,25 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($user);
             $entityManager->flush();
+            return $this->redirectToRoute('modify_user', ['id'=>$user->getId()]);
+        }
+        return $this->render('formulaires/userform.html.twig', [
+            'user' => $user,
+            'form_user' => $form->createView()
+        ]);
+    }
+
+    /* permet de réafficher la page d'un utilisateur pour modification */
+    #[Route("/user/modify/{id}", name:"modify_user")]
+    public function modifyUser(User $user, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(UserFormType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('modify_user', ['id'=>$user->getId()]);
         }
         return $this->render('formulaires/userform.html.twig', [
             'user' => $user,
@@ -79,16 +98,12 @@ class UserController extends AbstractController
             $res[$i]['name'] = $users->fetchById($res[$i]['Professionnal']);
         }
 
-
-
         return $this->render('professional/pro.html.twig', [
             'controller_name' => 'ProfessionalController',
             'search' => $searchCriteria,
             'searchResults' => $res
         ]);
     }
-
-
 
     #[Route("/professional/new", name: "proform")]
     public function FormulairePro(Request $request, EntityManagerInterface $entityManager): Response
@@ -97,8 +112,11 @@ class UserController extends AbstractController
         $form = $this->createForm(ProfessionalFormType::class, $professional);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $professional->setRoles(['ROLE_PRO','ROLE_USER']);
             $entityManager->persist($professional);
             $entityManager->flush();
+
+            return $this->redirectToRoute('modify_pro', ['id'=>$professional->getId()]);
         }
         return $this->render('formulaires/proform.html.twig', [
             'professional' => $professional,
@@ -107,6 +125,23 @@ class UserController extends AbstractController
     }
 
 
+    /* permet de réafficher la page d'un pro pour modification */
+    #[Route("/professional/modify/{id}", name:"modify_pro")]
+    public function modifyPro(User $user, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(ProfessionalFormType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('modify_pro', ['id'=>$user->getId()]);
+        }
+        return $this->render('formulaires/proform.html.twig', [
+            'professional' => $user,
+            'form_professional' => $form->createView()
+        ]);
+    }
 
     #[Route("/professional/ajoutpresta", name: "fichepro")]
     public function FicheBundle(EntityManagerInterface $entityManager, Request $request): Response

@@ -16,10 +16,17 @@
 {% block body %}
 	<script src="/assets/js/toggler.js"></script>
 	<main>
-		<div class="py-5 text-center mt-5">
+    {% if app.user %}
+        <div class="py-5 text-center mt-5">
+            <h1>Modifier votre compte utilisateur</h1>
+        </div>
+    {% else %}
+        <div class="py-5 text-center mt-5">
 			<h1>Inscription utilisateur</h1>
 			<p class="lead">Veuillez compléter le formulaire utilisateur ci-dessous afin d'enregistrer vos informations.</p>
 		</div>
+    {% endif %}
+		
 
 		<div class="container">
 			<div class="row background">
@@ -54,7 +61,7 @@
         {{  form_row(form_user.email) }}
         {{  form_row(form_user.password) }}
 
-<hr class="my-4">
+        <hr class="my-4">
 
 <!-- Button trigger modal -->
     <button type="button" class="buttonpay nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -68,6 +75,13 @@
 </div>
         {{ form_end(form_user)  }}
 
+        <!-- Button trigger modal -->
+        <button type="button" class="buttonpay" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Mes informations de paiements
+        </button>
+        </div>
+    </div>
+</form>
 
 
 <!-- Modal -->

@@ -20,11 +20,11 @@ class ProfessionalFormType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
-                'label' => 'Username'
+                'label' => 'Username',
+                'attr' => ['class'=>'col-6'],
             ])->add('email', EmailType::class, [
-                'label' => 'Email'
-            ])->add('roles', HiddenType::class, [
-                'empty_data' => ['ROLE_PRO'],
+                'label' => 'Email',
+                'attr' => ['class'=>'col-6'],
             ])->add('password', PasswordType::class, [
                 'label' => 'Mot de passe'
             ])->add('firstname', TextType::class, [
@@ -47,8 +47,6 @@ class ProfessionalFormType extends AbstractType
                 'label' => 'Code postal'
             ])->add('profile_picture', TextType::class, [
                 'label' => 'Photo de profil'
-            ])->add('prestation', TextType::class, [     /* Modifier l'ajout en tableau ou json */
-                'label' => 'Prestation',
             ])->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'
             ]);
@@ -59,21 +57,21 @@ class ProfessionalFormType extends AbstractType
         $builder
             ->add('seo', CheckboxType::class, [
                 'label' => 'SEO',
-                ])->add('sea', CheckboxType::class, [
+            ])->add('sea', CheckboxType::class, [
                 'label' => 'SEA',
-                ])->add('ref', CheckboxType::class, [
+            ])->add('ref', CheckboxType::class, [
                 'label' => 'Referencement',
-                ])->add('designlogo', CheckboxType::class, [
+            ])->add('designlogo', CheckboxType::class, [
                 'label' => 'Design_logo',
-                ])->add('cms', CheckboxType::class, [
+            ])->add('cms', CheckboxType::class, [
                 'label' => 'CMS',
-                ])->add('mailing', CheckboxType::class, [
+            ])->add('mailing', CheckboxType::class, [
                 'label' => 'Mailing',
-                ])->add('devweb', CheckboxType::class, [
+            ])->add('devweb', CheckboxType::class, [
                 'label' => 'Developpement_web',
-                ])->add('devapp', CheckboxType::class, [
+            ])->add('devapp', CheckboxType::class, [
                 'label' => 'Developpement_application',
-                ])->add('valid', SubmitType::class, [
+            ])->add('valid', SubmitType::class, [
                 'label' => 'Valider',
         ]);
     } */

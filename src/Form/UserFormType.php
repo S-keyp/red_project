@@ -13,7 +13,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
 class UserFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -41,8 +40,7 @@ class UserFormType extends AbstractType
                 'label' => 'Code postal'
             ])->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'
-            ])
-        ;
+            ]);;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
