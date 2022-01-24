@@ -33,7 +33,7 @@
 				{{ form_start(form_user, {
             'attr': {
                 'novalidate': 'novalidate',
-                    'class': 'col-lg-5' 
+                    'class': 'col-lg-5 mx-auto w-100'
                         }
                     })
                 }}
@@ -51,17 +51,15 @@
     <div class="col-6">
         {{  form_row(form_user.code_postal) }}
         {{  form_row(form_user.tel) }}
+        {{  form_row(form_user.country) }}
     </div>
     <div class="col-6">
-        {{  form_row(form_user.country) }}
+        {{  form_row(form_user.email) }}
+        {{  form_row(form_user.password) }}
     </div>
 
 <hr class="my-4">
 
-        {{  form_row(form_user.email) }}
-        {{  form_row(form_user.password) }}
-
-        <hr class="my-4">
 
 <!-- Button trigger modal -->
     <button type="button" class="buttonpay nav-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -75,17 +73,12 @@
 </div>
         {{ form_end(form_user)  }}
 
-        <!-- Button trigger modal -->
-        <button type="button" class="buttonpay" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Mes informations de paiements
-        </button>
-        </div>
-    </div>
+    
 </form>
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modale modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">

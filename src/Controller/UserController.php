@@ -153,7 +153,25 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route("/professional/ajoutpresta", name: "fichepro")]
+    
+    #[Route("/professional/{id}", name:"fichepro")]
+    public function show(User $user, ProBundlesRepository $proBundlesRepository, Request $request): Response
+    {
+        $offset = max(0, $request->query->getInt('offset', 0));
+        $paginator = $proBundlesRepository->getBundlesPaginator($user, $offset);
+
+        return $this->render('conference/show.html.twig', [
+            'title' => "Vous voici sur la page de la conférence ". $user,
+            'text' => 'Voici les packs de ce professionel:',
+            'user' => $user,
+            'comments' => $paginator,
+            'previous' => $offset - ProBundlesRepository::PAGINATOR_PER_PAGE,
+            'next' => min(count($paginator), $offset + ProBundlesRepository::PAGINATOR_PER_PAGE),
+        ]);
+    }
+
+
+    #[Route("/professional/{id}/ajoutpresta", name: "fichepro")]
     public function FicheBundle(EntityManagerInterface $entityManager, Request $request): Response
     {
         $ficheBundle = new ProBundles();

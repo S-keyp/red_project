@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\ProBundles;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
@@ -20,6 +21,20 @@ class ProBundlesRepository extends ServiceEntityRepository
         parent::__construct($registry, ProBundles::class);
     }
 
+    public const PAGINATOR_PER_PAGE = 1;
+
+    public function getBundlesPaginator(User $user, int $offset): Paginator
+    {
+        $query = $this->createQueryBuilder('c')
+            ->andWhere('c.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('c.createdAt', 'DESC')
+            ->setMaxResults(self::PAGINATOR_PER_PAGE)
+            ->setFirstResult($offset)
+            ->getQuery();
+
+        return new Paginator($query);
+    }
     /* ENUMERATEUR RECUPERATION EN BASE*/
     /**
      * GetJob Permettant de récupérer le nom du job suivant l'id donnée.
