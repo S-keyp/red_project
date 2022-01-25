@@ -11,7 +11,7 @@ class MainController extends AbstractController
     #[Route('/', name: 'homepage')]
     public function index(): Response
     {
-        $isgranted=0;
+        /* $isgranted=0;
         if ($this->isGranted('ROLE_ADMIN')) {
             $isgranted=1;
         }
@@ -20,11 +20,10 @@ class MainController extends AbstractController
         }
         if ($this->isGranted('ROLE_PRO')) {
             $isgranted=2;
-        }
+        } */
 
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
-            'isgranted'=>$isgranted,
         ]);
     }
 }

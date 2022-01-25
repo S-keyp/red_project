@@ -172,16 +172,6 @@ class UserController extends AbstractController
     #[Route("/professional/{id}", name: "fichepro")]
     public function show(User $user, EntityManagerInterface $entityManager, Request $request, ProBundlesRepository $proBundlesRepository): Response
     {
-        $ficheBundle = new ProBundles();
-        $form = $this->createForm(ProBundlesType::class, $ficheBundle);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            /*$uploadedFile = $form['image_service']->getData();*/
-            $ficheBundle->setProfessionnal($user->getId());
-            $entityManager->persist($ficheBundle);
-            $entityManager->flush();
-        }
-
         $bundles = "";
         $bundles = $proBundlesRepository->findBy(['Professionnal' => $user->getId()]);
 
@@ -189,8 +179,6 @@ class UserController extends AbstractController
             'title' => "Vous voici sur la page de la conférence " . $user,
             'text' => 'Voici les packs de ce professionel:',
             'user' => $user,
-            'fichebundle' => $ficheBundle,
-            'form_probundles' => $form->createView(),
             'bundles' => $bundles,
         ]);
     }
