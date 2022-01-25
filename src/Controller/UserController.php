@@ -174,7 +174,8 @@ class UserController extends AbstractController
     {
         $bundles = "";
         $bundles = $proBundlesRepository->findBy(['Professionnal' => $user->getId()]);
-
+        // var_dump($bundles[0]);
+        // $bundles['serviceCategory'] = $proBundlesRepository->getJob($bundles['serviceCategory']);
         return $this->render('formulaires/bundleform.html.twig', [
             'title' => "Vous voici sur la page de la conférence " . $user,
             'text' => 'Voici les packs de ce professionel:',
