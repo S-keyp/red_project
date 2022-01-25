@@ -1,3 +1,11 @@
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+}
+
 .container {
     background: #2b303a;
     border-radius: 8px;
@@ -10,8 +18,30 @@
     border: none!important;
     background: #d64933!important;
     box-shadow: 2px 2px 2px 1px black;
+    margin-top:20px;
 }
 
 label {
     color: white!important;
+}
+
+.row02 {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    box-shadow: 2px 2px 2px 1px black;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    box-shadow: 2px 2px 2px 1px black;
 }
