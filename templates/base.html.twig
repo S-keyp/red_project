@@ -60,8 +60,17 @@
 					<a class="nav-link" href="{{ path('professional')}}">Découvrir les professionnels</a>
 				</li>
 				{% if app.user %}
+					{% if isgranted == 1 %}
+						mljmlkjmljmljmljmljmlkjklj
+					{% endif %}
+					{% if isgranted == 2 %}
+						aaaaaaaaaaaaaaaaaaaaaaaa
+					{% endif %}
+					{% if isgranted == 3 %}
+						bbbbbbbbbbbbbbbbb
+					{% endif %}
 					<li class="nav-item">
-						<a class="nav-link" href="{# {{ path('fichepro')}} #}">Proposer mes services</a>
+						<a class="nav-link" href="{{ path('fichepro')}}">Proposer mes services</a>
 					</li>
 				{% else %}
 					<li class="nav-item">
