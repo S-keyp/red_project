@@ -23,29 +23,30 @@
 				<tr>
 					<td>{{element.proBundles.titleService}}</td>
 
+
 					<td>{{element.proBundles.servicePrice}}€</td>
 
-                    <td>{{element.quantite}}</td>
-			        <td>{{element.quantite * element.proBundles.servicePrice}}€</td>
+					<td>{{element.quantite}}</td>
+					<td>{{element.quantite * element.proBundles.servicePrice}}€</td>
 
-                    <td>
-                        <a href="{{path("cart_add", {id: element.proBundles.id})}}" class="btn btn-success">
-
-                            <i class="bi bi-cart-plus"></i>
-                        </a>
-                        <a href="{{path("cart_remove", {id: element.proBundles.id})}}" class="btn btn-warning">
-
-                            <i class="bi bi-cart-dash"></i>
-                        </a>
-                        <a href="{{path("cart_delete", {id: element.proBundles.id})}}" class="btn btn-danger">
-
-                            <i class="bi bi-cart-x"></i>
-                        </a>
-                    </td>
+					<td>
+						<a href="{{path("cart_add", {id: element.proBundles.id})}}" class="btn btn-success">
+							Ajouter 1
+							<i class="bi bi-cart-plus"></i>
+						</a>
+						<a href="{{path("cart_remove", {id: element.proBundles.id})}}" class="btn btn-warning">
+							Supprimer 1
+							<i class="bi bi-cart-dash"></i>
+						</a>
+						<a href="{{path("cart_delete", {id: element.proBundles.id})}}" class="btn btn-danger">
+							Supprimer tout
+							<i class="bi bi-cart-x"></i>
+						</a>
+					</td>
 				</tr>
-			
+			</tbody>
 		</tbody>
 	</td>
-	
+
 </tbody></tr>{% else %}<tr>
 <td colspan="5" class="text-center">Votre Panier est vide</td></tr>{% endfor %}</tbody><tfoot></tfoot><tr><td colspan="3">Total</td><td colspan="text-end">{{ total }}€</td><td></td></tr></table>{% endblock %}
