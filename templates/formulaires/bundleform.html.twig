@@ -79,7 +79,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <a href="" class="btn">Ajouter au panier</a>
+                                <a href="{{path("panier_add", {id: produit.id})}}" class="btn btn-primary" style="float:right;margin:10px;">Ajouter au panier</a>
                             </div>
                         {% endfor %}               
                     {% else %}
