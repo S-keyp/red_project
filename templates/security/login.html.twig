@@ -10,9 +10,9 @@
 
 {% block body %}
 <div class="py-5 text-center mt-5">
-            <h1>Se connecter</h1>
-            <p class="lead">Veuillez vous identifier où créer un compte</p>
-        </div>
+    <h1>Se connecter</h1>
+    <p class="lead">Veuillez vous identifier où créer un compte</p>
+</div>
 <div class="container">
     <form method="post">
         {% if error %}
@@ -36,9 +36,9 @@
                     </div>
                 </div>
                 <div class="row02">
-                        <button class="valid text-center btn btn-lg btn-primary" type="submit">
-                            Valider
-                        </button>
+                    <button class="valid text-center btn btn-lg btn-primary" type="submit">
+                        Valider
+                    </button>
                 </div>
             </div>
         {#
@@ -51,9 +51,13 @@
                 </label>
             </div>
         #}
-        <div class="col-md-6 text-center">
-                    <a class="btn btn-primary" href="{{ path('proform')}}">Créer un compte pro</a><br>
-                    <a class="btn btn-secondary" href="{{ path('userform')}}">Créer un compte utilisateur</a>
+        <div class="row03">
+            <div class="text-center">
+                <a class="btn btn-primary" href="{{ path('proform')}}">Créer un compte pro</a><br>
+            </div>
+            <div class="text-center">
+                <a class="btn btn-secondary" href="{{ path('userform')}}">Créer un compte utilisateur</a>
+            </div>
         </div>
     </form>
 </div>

@@ -25,11 +25,6 @@ label {
     color: white!important;
 }
 
-.row02 {
-    display: flex;
-    justify-content: center;
-}
-
 .btn-primary {
     color: #fff;
     background-color: #0d6efd;
@@ -43,5 +38,25 @@ label {
     color: #fff;
     background-color: #6c757d;
     border-color: #6c757d;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
     box-shadow: 2px 2px 2px 1px black;
 }
+
+.row02 {
+    display: flex;
+    justify-content: center;
+}
+
+.row03 {
+    display: flex;
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center!important;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
