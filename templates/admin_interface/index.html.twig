@@ -6,13 +6,18 @@
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    thead { background: #242424; color: #FFF; font-size:1.2rem;}
+    th { padding:5px; margin-bottom: 0.5rem;}
+     { padding:0.3rem;}
+    tbody td,thead th { padding:0.3rem;}
+
 </style>
 
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
     
-    <table>
+    <table class="text-center">
         <thead>
             <tr>
                 <th>Nom</th>
@@ -26,21 +31,18 @@
 
     {% for user in users %}
 
-    <tr>
-        <td>{{user.firstname}}</td>
-        <td>{{user.lastname}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.codePostal}}</td>
-        <td><button class="btn btn-primary">Voir</button></td>
-        <td><button class="btn btn-danger">Suprrimer</button></td>
-        
-    </tr>
+        <tbody>
+            <tr>
+                <td>{{user.firstname}}</td>
+                <td>{{user.lastname}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.codePostal}}</td>
+                <td><button class="btn btn-primary">Voir</button></td>
+                <td><button class="btn btn-danger">Suprrimer</button></td>
+            </tr>
+        </tbody>
     {% endfor %}
     </table>
-
-
-
-
 
 
     This friendly message is coming from:
