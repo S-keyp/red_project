@@ -18,16 +18,15 @@
 				<th>Actions</th>
 			</tr>
 		</thead>
-		{% dump dataPanier %}
 		<tbody>
 			{% for element in dataPanier %}
 				<tr>
 					<td>{{element.proBundles.titleService}}</td>
 
-					<td>{{element.proBundles.servicePrice}}</td>€
+					<td>{{element.proBundles.servicePrice}}€</td>
 
                     <td>{{element.quantite}}</td>
-			        <td>{{element.quantite * element.proBundles.servicePrice}}</td>€
+			        <td>{{element.quantite * element.proBundles.servicePrice}}€</td>
 
                     <td>
                         <a href="{{path("cart_add", {id: element.proBundles.id})}}" class="btn btn-success">
