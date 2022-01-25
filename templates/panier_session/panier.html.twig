@@ -21,9 +21,9 @@
             {% for element in dataPanier %}
                 <tr>
                     <td>{{element.produit.name}}</td>
-                    <td class="text-end">{{element.produit.service_price}} €</td>
+                    <td class="text-end">{{element.produit.TitleService}} €</td>
                     <td>{{element.quantite}}</td>
-                    <td class="text-end">{{element.quantite * element.produit.service_price}} €</td>
+                    <td class="text-end">{{element.quantite * element.produit.servicePrice}} €</td>
                     <td>
                         <a href="{{path("panier_add", {id: element.produit.id})}}" class="btn btn-success"><i class="bi bi-cart-plus"></i></a>
                         <a href="{{path("panier_remove", {id: element.produit.id})}}" class="btn btn-warning"><i class="bi bi-cart-dash"></i></a>

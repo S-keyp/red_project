@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\ProductBundle;
-use App\Repository\ProductBundleRepository;
+use App\Entity\ProBundles;
+use App\Repository\ProBundlesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PanierSessionController extends AbstractController
 {
     #[Route('/panier/session', name: 'panier')]
-    public function index(SessionInterface $session, ProductBundleRepository $productBundleRepository): Response
+    public function index(SessionInterface $session, ProBundlesRepository $proBundlesRepository): Response
     {
         $panier = $session->get("panier", []);
 
@@ -20,7 +20,7 @@ class PanierSessionController extends AbstractController
         $total = 0;
 
         foreach($panier as $id => $quantite){
-            $produit = $productBundleRepository->find($id);
+            $produit = $proBundlesRepository->find($id);
             $dataPanier[] = [
                 "produit" => $produit,
                 "quantite" => $quantite,
@@ -32,7 +32,7 @@ class PanierSessionController extends AbstractController
     }
 
     #[Route('/panier/add/{id}' , name: 'add')]
-    public function add(ProductBundle $produit, SessionInterface $session){
+    public function add(ProBundles $produit, SessionInterface $session){
 
        $panier = $session->get("panier", []);
         $id = $produit->getId();
@@ -50,7 +50,7 @@ class PanierSessionController extends AbstractController
 
     }
     #[Route('/panier/remove/{id}' , name: 'remove')]
-    public function remove(ProductBundle $produit, SessionInterface $session){
+    public function remove(ProBundles $produit, SessionInterface $session){
 
        $panier = $session->get("panier", []);
        $id = $produit->getId();
@@ -71,7 +71,7 @@ class PanierSessionController extends AbstractController
 
     }
     #[Route('/panier/delete/{id}' , name: 'delete')]
-    public function delete(ProductBundle $produit, SessionInterface $session){
+    public function delete(ProBundles $produit, SessionInterface $session){
 
        $panier = $session->get("panier", []);
        $id = $produit->getId();
