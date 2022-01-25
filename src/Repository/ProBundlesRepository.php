@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\ProBundles;
-use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
@@ -21,20 +20,6 @@ class ProBundlesRepository extends ServiceEntityRepository
         parent::__construct($registry, ProBundles::class);
     }
 
-    public const PAGINATOR_PER_PAGE = 1;
-
-    public function getBundlesPaginator(User $user, int $offset): Paginator
-    {
-        $query = $this->createQueryBuilder('c')
-            ->andWhere('c.user = :user')
-            ->setParameter('user', $user)
-            ->orderBy('c.createdAt', 'DESC')
-            ->setMaxResults(self::PAGINATOR_PER_PAGE)
-            ->setFirstResult($offset)
-            ->getQuery();
-
-        return new Paginator($query);
-    }
     /* ENUMERATEUR RECUPERATION EN BASE*/
     /**
      * GetJob Permettant de récupérer le nom du job suivant l'id donnée.
@@ -56,23 +41,19 @@ class ProBundlesRepository extends ServiceEntityRepository
 
 
 
-
-    // /**
-    //  * @return ProBundles[] Returns an array of ProBundles objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return ProBundles[] Returns an array of ProBundles objects
+     */
+    public function findById($id)
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
+            ->andWhere('p.id = :id')
+            ->setParameter('id', $id)
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?ProBundles
