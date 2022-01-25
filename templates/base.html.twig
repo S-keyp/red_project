@@ -61,7 +61,9 @@
 				</li>
 				{% if app.user %}
 					<li class="nav-item">
-						<a class="nav-link" href="{# {{ path('fichepro')}} #}">Proposer mes services</a>
+						<a class="nav-link" href=" {{ path('fichepro')}}">Proposer mes services</a>
+						{% if is_granted('ROLE_PRO') %}
+						<a class="nav-link" href=" {{ path('fichepro')}}">Proposer mes services</a>
 					</li>
 				{% else %}
 					<li class="nav-item">
