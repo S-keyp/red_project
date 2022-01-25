@@ -9,9 +9,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
+
+
+#[Route("/cart", name:"cart_")]
+
 class PanierSessionController extends AbstractController
 {
-    #[Route('/panier/session', name: 'panier')]
+    #[Route('/', name: 'index')]
     public function index(SessionInterface $session, ProBundlesRepository $proBundlesRepository): Response
     {
         $panier = $session->get("panier", []);
@@ -22,16 +26,17 @@ class PanierSessionController extends AbstractController
         foreach($panier as $id => $quantite){
             $produit = $proBundlesRepository->find($id);
             $dataPanier[] = [
-                "produit" => $produit,
+                "proBundles" => $produit,
                 "quantite" => $quantite,
+                
             ];
             $total += $produit->getServicePrice() * $quantite;
         }
 
-        return $this->render('panier_session/panier.html.twig', compact("dataPanier", "total"));
+        return $this->render('cart/index.html.twig', compact("dataPanier", "total"));
     }
 
-    #[Route('/panier/add/{id}' , name: 'add')]
+    #[Route('/cart/add/{id}' , name: 'add')]
     public function add(ProBundles $produit, SessionInterface $session){
 
        $panier = $session->get("panier", []);
@@ -46,10 +51,10 @@ class PanierSessionController extends AbstractController
        //on sauvegarde la session
        $session->set("panier", $panier);
 
-       return $this->redirectToRoute("panier_panier");
+       return $this->redirectToRoute("cart_index");
 
     }
-    #[Route('/panier/remove/{id}' , name: 'remove')]
+    #[Route('/cart/remove/{id}' , name: 'remove')]
     public function remove(ProBundles $produit, SessionInterface $session){
 
        $panier = $session->get("panier", []);
@@ -67,7 +72,7 @@ class PanierSessionController extends AbstractController
        //on sauvegarde la session
        $session->set("panier", $panier);
 
-       return $this->redirectToRoute("panier_panier");
+       return $this->redirectToRoute("cart_index");
 
     }
     #[Route('/panier/delete/{id}' , name: 'delete')]
@@ -85,7 +90,7 @@ class PanierSessionController extends AbstractController
        //on sauvegarde la session
        $session->set("panier", $panier);
 
-       return $this->redirectToRoute("panier_panier");
+       return $this->redirectToRoute("cart_index");
 
     }
     

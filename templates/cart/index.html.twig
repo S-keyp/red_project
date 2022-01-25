@@ -17,17 +17,18 @@
                 <th>Actions</th>
             </tr>
         </thead>
+        {% dump dataPanier %}
         <tbody>
             {% for element in dataPanier %}
                 <tr>
-                    <td>{{element.produit.name}}</td>
-                    <td class="text-end">{{element.produit.TitleService}} €</td>
+                    <td>{{element.TitleService}}</td>
+                    <td class="text-end">{{element.servicePrice}} €</td>
                     <td>{{element.quantite}}</td>
-                    <td class="text-end">{{element.quantite * element.produit.servicePrice}} €</td>
+                    <td class="text-end">{{element.quantite * element.servicePrice}} €</td>
                     <td>
-                        <a href="{{path("panier_add", {id: element.produit.id})}}" class="btn btn-success"><i class="bi bi-cart-plus"></i></a>
-                        <a href="{{path("panier_remove", {id: element.produit.id})}}" class="btn btn-warning"><i class="bi bi-cart-dash"></i></a>
-                        <a href="{{path("panier_delete", {id: element.produit.id})}}" class="btn btn-danger"><i class="bi bi-cart-x"></i></a>
+                        <a href="{{path("cart_add", {id: element.id})}}" class="btn btn-success"><i class="bi bi-cart-plus"></i></a>
+                        <a href="{{path("cart_remove", {id: element.id})}}" class="btn btn-warning"><i class="bi bi-cart-dash"></i></a>
+                        <a href="{{path("cart_delete", {id: element.id})}}" class="btn btn-danger"><i class="bi bi-cart-x"></i></a>
                     </td>
                 </tr>
             {% else %}
