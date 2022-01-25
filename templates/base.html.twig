@@ -41,12 +41,12 @@
 						<a href="{{ path('app_logout') }}">Déconnexion</a>
 					</div>
 					{# {% if is_granted('ROLE_USER',object,field) %}
-									
-									{% endif %}'ROLE_USER' %} 
-									{% endif %}#}
+														
+														{% endif %}'ROLE_USER' %} 
+														{% endif %}#}
 					{# <div class="identLink text-center mx-2 my-2 px-2 mb-0" style="float:right;margin-top: 20px; margin-left: 20px;">
-										<a href="{{ path('modify_user',{id: user.id}) }}">Mon profil</a>
-									</div> #}
+															<a href="{{ path('modify_user',{id: user.id}) }}">Mon profil</a>
+														</div> #}
 
 				{% else %}
 					<a href="{{ path('app_login') }}" class="identLink" style="float:right;margin-top: 20px; margin-left: 20px;">Identification</a>
@@ -68,25 +68,25 @@
 								<a class="nav-link" href="{{ path('professional')}}">Découvrir les professionnels</a>
 							</li>
 							{# {% if app.user %}
-												{% if isgranted == 1 %}
-													mljmlkjmljmljmljmljmlkjklj
-												{% endif %}
-												{% if isgranted == 2 %}
-													aaaaaaaaaaaaaaaaaaaaaaaa
-												<li class="nav-item">
-													<a class="nav-link" href="{{ path('fichepro', {id: user.id})}}">Proposer mes services</a>
-												</li>
-												{% endif %}
-												{% if isgranted == 3 %}
-													bbbbbbbbbbbbbbbbb
-												{% endif %}
-												<li class="nav-item">
-													<a class="nav-link" href=" {{ path('fichepro', {'id': app.user.id})}}">Proposer mes services</a>
-													{% if false %}
-														<a class="nav-link" href=" {{ path('modify_pro')}}">Mon Compte</a>
-													{% endif %}
-												</li>
-											{% else %}#}
+																			{% if isgranted == 1 %}
+																				mljmlkjmljmljmljmljmlkjklj
+																			{% endif %}
+																			{% if isgranted == 2 %}
+																				aaaaaaaaaaaaaaaaaaaaaaaa
+																			<li class="nav-item">
+																				<a class="nav-link" href="{{ path('fichepro', {id: user.id})}}">Proposer mes services</a>
+																			</li>
+																			{% endif %}
+																			{% if isgranted == 3 %}
+																				bbbbbbbbbbbbbbbbb
+																			{% endif %}
+																			<li class="nav-item">
+																				<a class="nav-link" href=" {{ path('fichepro', {'id': app.user.id})}}">Proposer mes services</a>
+																				{% if false %}
+																					<a class="nav-link" href=" {{ path('modify_pro')}}">Mon Compte</a>
+																				{% endif %}
+																			</li>
+																		{% else %}#}
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('proform')}}">Proposer mes services</a>
 							</li>
