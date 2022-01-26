@@ -26,7 +26,7 @@ class ProBundles
      */
     private $descriptionService;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string')]
     private $Professionnal;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -85,12 +85,12 @@ class ProBundles
         return $this;
     }
 
-    public function getProfessionnal(): ?int
+    public function getProfessionnal(): ?string
     {
         return $this->Professionnal;
     }
 
-    public function setProfessionnal(int $Professionnal): self
+    public function setProfessionnal(string $Professionnal): self
     {
         $this->Professionnal = $Professionnal;
 
