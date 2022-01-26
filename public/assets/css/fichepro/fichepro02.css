@@ -22,6 +22,12 @@
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #2b303a);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
+
+.profil{
+
+  width: 65%;
+  border-radius: 10%;
+}
 .desc {
   background-color: #747272;
   color: white;
@@ -40,6 +46,11 @@
   filter: drop-shadow(7px 7px 1px #17191f);
 }
 
+h2{
+  text-decoration: underline;
+  margin-bottom: 50px;
+}
+
 .texte {
   font-size: 1.5rem;
 }
@@ -54,6 +65,7 @@
 
 .row03 {
   display: flex;
+  margin: 30px;
   justify-content: center;
 }
 
