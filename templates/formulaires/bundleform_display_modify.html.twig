@@ -29,7 +29,7 @@
                </div>
             </div>
          </div>
-         <div class="row">
+         <div class="row mx-3">
             {% if user.description %}
             <div class="col-4-md-7 desc">
                <p class="texte"> {{user.description}}</p>
@@ -46,32 +46,32 @@
          <div class="row">
             <h3 class="text-center art-degrade">MES PRESTATIONS</h3>
             {% if bundles %}
-            {% for bundle in bundles %}
-            <div class="col-md-7 prestation">
-               <input type="hidden" value="{{bundle.id}}"></input>
-               {{bundle.titleService}}<br>
-               {{bundle.descriptionService}}<br>
-               {{bundle.servicePrice}}<br>
-               {% if bundle.serviceCategory == 1 %}
-               Graphiste
-               {% endif %}
-               {% if bundle.serviceCategory == 2 %}
-               Développeur
-               {% endif %}
-               {% if bundle.serviceCategory == 3 %}
-               Référencement
-               {% endif %}
-            </div>
-            <div class="col-md-4 d-flex align-items-center">
-               <a href="" class="btn btn-primary" style="float:right;margin:10px;">Modifier</a>
-                <a href="{{path("remove_bundle", {id: user.id, bundleId: bundle.id})}}" class="btn btn-danger"style="float:right;margin:10px;">Supprimer</a>            
-            </div>
-            {% endfor %}               
+               {% for bundle in bundles %}
+                  <div class="col-md-7 prestation">
+                     <input type="hidden" value="{{bundle.id}}"></input>
+                     {{bundle.titleService}}<br>
+                     {{bundle.descriptionService}}<br>
+                     {{bundle.servicePrice}}<br>
+                     {% if bundle.serviceCategory == 1 %}
+                        Graphiste
+                     {% endif %}
+                     {% if bundle.serviceCategory == 2 %}
+                        Développeur
+                     {% endif %}
+                     {% if bundle.serviceCategory == 3 %}
+                        Référencement
+                     {% endif %}
+                  </div>
+                  <div class="col-md-4 d-flex align-items-center">
+                     <a href="" class="btn btn-primary" style="float:right;margin:10px;">Modifier</a>
+                     <a href="{{path("remove_bundle", {id: user.id, bundleId: bundle.id})}}" class="btn btn-danger"style="float:right;margin:10px;">Supprimer</a>            
+                  </div>
+               {% endfor %}               
             {% else %}
             {% endif %}
          </div>
          <hr class="my-4">
-         <h3 class="text-center art-degrade">AJOUTER / MODIFIER UNE PRESTATION</h3>
+         <h3 class="text-center art-degrade">AJOUTER UNE PRESTATION</h3>
          <div class="container formcomple">
             <div class="row presta">
                <div class="col-12-md-9">
