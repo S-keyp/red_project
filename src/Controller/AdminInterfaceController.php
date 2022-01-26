@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\SearchType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,6 +28,7 @@ class AdminInterfaceController extends AbstractController
         }
 
         $users = $userRepository->findAll();
+
         return $this->render('admin_interface/index.html.twig', [
             'controller_name' => 'AdminInterfaceController',
             'users' => $users,
@@ -34,27 +37,21 @@ class AdminInterfaceController extends AbstractController
     }
 
     /* SUPPRIMER UN UTILISATEUR */
-    #[Route('/admin/interface/remove/{id}', name: 'remove_user')]
-    public function remove(Request $request, User $user, UserRepository $userRepository): Response
+    #[Route('/admin/interface/remove', name: 'remove_user')]
+    public function remove(Request $request, EntityManagerInterface $entityManager, UserRepository $userRepository)
     {
-
         $id = (int)$request->query->get('id');
         $user = $userRepository->find($id);
-
         
-        return $this->redirectToRoute('admin_interface');
+        if (!$user) {
+            throw $this->createNotFoundException(
+                'Pas d\'utilisateur ayant un id :  '.$id
+            );
+        }
+        
+        $entityManager->remove($user);
+        $entityManager->flush();
+    
+        return $this->redirectToRoute('admin_interface'); 
     }
-    /* AFFICHER UN UTILISATEUR */
-    /* #[Route('/admin/interface/show/{id}', name: 'show_user')]
-    public function show( UserRepository $userRepository): Response
-    {
-        $users = $userRepository->findAll();
-        return $this->render('admin_interface/index.html.twig', [
-            'controller_name' => 'AdminInterfaceController',
-            'users' => $users,
-            
-        ]);
-    } */
-
-
 }

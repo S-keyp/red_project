@@ -32,17 +32,17 @@
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 /* .description {
-  background-color: #2b303a;
-  color: white !important;
-  margin-top: 20px;
-  text-align: center;
-  justify-content: center;
-  margin-bottom: 50px;
-  padding: 30px;
-  border-radius: 0.8rem;
-  margin-left: -3rem;
-  filter: drop-shadow(7px 7px 1px #17191f);
-} */
+    background-color: #2b303a;
+    color: white !important;
+    margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    padding: 30px;
+    border-radius: 0.8rem;
+    margin-left: -3rem;
+    filter: drop-shadow(7px 7px 1px #17191f);
+  } */
 
 .description {
   background-color: #2b303a;
@@ -75,11 +75,12 @@
 }
 
 /* .text-center {
-  text-align: center !important;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  padding-top: 1rem;
-} */
+    text-align: center !important;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+  } */
+
 .text-center {
   text-align: center !important;
   padding-right: 1rem;
@@ -89,10 +90,10 @@
 }
 
 .art-degrade {
-  background: linear-gradient(to right, #d64933, #000);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-      letter-spacing: 3px;
+    background: linear-gradient(to right, #d64933, #000);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+        letter-spacing: 3px;
 }
 
 .btn {
@@ -102,6 +103,16 @@
   float: right;
   margin-top: 50px;
   margin-right: 70px;
+}
+
+.btn-danger {
+  border: none !important;
+  background: #d64933;
+}
+
+#pro_bundles_save {
+    display: flex;
+    justify-content: center;
 }
 
 /* Prix */
@@ -132,23 +143,46 @@
   text-align: center;
 }
 
+/* Fiche ajouter/modifier prestation */
+
+.form-label {
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.formcomple {
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(7px 7px 1px #17191f);
+  
+}
+
+.boutonajouter {
+    display: flex;
+    justify-content: center;
+}
+
+#pro_bundles_descriptionService {
+    padding: 2rem;
+}
+
 /* Keyframes */
 
 /* .description {
-  animation-duration: 3s;
-  animation-name: slidein;
-}
-
-@keyframes slidein {
-  from {
-    margin-left: 100%;
+    animation-duration: 3s;
+    animation-name: slidein;
   }
-  75% {
-    font-size: 300%;
-    margin-left: 25%;
-  }
-
-  to {
-    margin-left: 0%;
-  }
-} */
+  
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+    }
+    75% {
+      font-size: 300%;
+      margin-left: 25%;
+    }
+  
+    to {
+      margin-left: 0%;
+    }
+  } */
