@@ -135,8 +135,8 @@ class UserController extends AbstractController
             $professional->setPassword($passhash->hashPassword($professional, $professional->getPassword()));
             $entityManager->persist($professional);
             $entityManager->flush();
-            
-            return $this->redirectToRoute('modify_pro', ['id' => $professional->getId()]);
+
+            return $this->redirectToRoute('app_login');
         }
         return $this->render('formulaires/proform.html.twig', [
             'professional' => $professional,
