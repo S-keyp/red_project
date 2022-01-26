@@ -183,7 +183,7 @@ class UserController extends AbstractController
     }
 
 
-    /* ajout et suppression de presta par le pro */
+    /* AJOUT PRESTA PAR LE PRO */
     #[Route("/professional/{id}/ajoutpresta", name: "modifyfichepro")]
     public function FicheBundle(User $user, EntityManagerInterface $entityManager, Request $request, ProBundlesRepository $proBundlesRepository): Response
     {
@@ -209,5 +209,22 @@ class UserController extends AbstractController
             'bundles' => $bundles,
             'user' => $user,
         ]);
+    }
+
+    /* SUPPRIMER LA PRESTA PAR LE PRO */
+    #[Route("/professional/{id}/remove/{bundleId}", name: "remove_bundle")]
+    public function removeBundle(User $user, int $bundleId, EntityManagerInterface $entityManager, Request $request, ProBundlesRepository $proBundlesRepository)
+    {
+        $bundle = $proBundlesRepository->find($bundleId);
+        if (!$bundle) {
+            throw $this->createNotFoundException(
+                'Pas de bundle ayant un id :  '.$bundleId
+            );
+        }
+        
+        $entityManager->remove($bundle);
+        $entityManager->flush();
+    
+        return $this->redirectToRoute('modifyfichepro', ['id' => $user->getId()]);
     }
 }
