@@ -86,7 +86,7 @@ class ProBundles
         return $this;
     }
 
-    public function getServicePrice(): ?int
+    public function getServicePrice(): ?float
     {
         return $this->servicePrice;
     }

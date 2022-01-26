@@ -23,7 +23,7 @@ class Order
     #[ORM\Column(type: 'float')]
     private $total;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
     private $id_utilisateur;
 
     #[ORM\Column(type: 'integer')]
@@ -73,12 +73,12 @@ class Order
         return $this;
     }
 
-    public function getIdUtilisateur(): ?int
+    public function getIdUtilisateur(): ?string
     {
         return $this->id_utilisateur;
     }
 
-    public function setIdUtilisateur(int $id_utilisateur): self
+    public function setIdUtilisateur(string $id_utilisateur): self
     {
         $this->id_utilisateur = $id_utilisateur;
 

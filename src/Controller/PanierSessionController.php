@@ -4,14 +4,18 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Entity\ProBundles;
+use App\Entity\User;
 use App\Repository\OrderRepository;
 use App\Repository\ProBundlesRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[Route("/cart", name: "cart_")]
 
@@ -105,7 +109,7 @@ class PanierSessionController extends AbstractController
 
 
     #[Route('/confirm/', name: 'confirm_cart')]
-    public function confirm(SessionInterface $session, ProBundlesRepository $proBundlesRepository,  ManagerRegistry $doctrine)
+    public function confirm(SessionInterface $session, ProBundlesRepository $proBundlesRepository, ManagerRegistry $doctrine)
     {
 
         $panier = $session->get("panier", []);
@@ -124,26 +128,28 @@ class PanierSessionController extends AbstractController
             ];
             $total += $produit->getServicePrice() * $quantite;
 
-// $manager = $doctrine->getManager();
+           $pro = $proBundlesRepository->findOneBy(array('id' => $id));
 
-//             $orderData = new Order();
 
-//              $orderData->setIdUtilisateur(1);
-//            $orderData->setProductId($dataPanier['id:App\Entity\ProBundles:private']);
-//            $orderData->setProfessionalId($dataPanier['Professionnal']);
-//            $orderData->setTotal($dataPanier['servicePrice']);
-//            $orderData->setQuantity($dataPanier['quantite']);
+ $manager = $doctrine->getManager();
 
-//           $manager->persist($orderData);
+             $orderData = new Order();
 
-//           //save donnés 
-//           $manager->flush();
+             $orderData->setProductId($pro->getId());
+            $orderData->setProfessionalId($pro->getProfessionnal());
+            $orderData->setTotal($pro->getServicePrice() * $quantite);
+           $orderData->setQuantity($quantite);
+           $orderData->setIdUtilisateur($this->getUser()->getUserIdentifier());
+
+          $manager->persist($orderData);
+
+//            //save donnés 
+            $manager->flush();
         }
 
-        print_r($dataPanier);
 
         //On clear les donnés du panier
-        //$session->remove("panier", []);
+        $session->remove("panier");
 
         return $this->render('cart/confirm.html.twig',);
 
