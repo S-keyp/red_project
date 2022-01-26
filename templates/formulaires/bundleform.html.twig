@@ -67,9 +67,15 @@
                   <div class="expire">Expire dans 6 jours!</div>
                </div>
             </div>
+            {% if app.user %}
             <div class="col-md-4 align-items-center">
                <a href="{{path("cart_add", {id: bundle.id})}}" class="btn btn-primary" style="float:right;margin:50px;">Ajouter au panier</a>
             </div>
+            {% else %}
+               <div class="col-md-4 align-items-center">
+                  <a href="{{path("app_login")}}" class="btn btn-primary" style="float:right;margin:50px;">Ajouter au panier</a>
+               </div>   
+            {% endif %}
             {% endfor %}               
             {% else %}
             {% endif %}
