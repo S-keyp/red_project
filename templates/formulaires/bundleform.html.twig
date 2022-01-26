@@ -74,13 +74,13 @@
                             {% endif %}
 
                                 <div class="promo">
-                                    <div class="title">500 euros</div>
+                                    <div class="title">{{bundle.servicePrice}}euros</div>
                                         <div class="expire">Expire dans 6 jours!</div>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
-                                <a href="{{path("panier_add", {id: produit.id})}}" class="btn btn-primary" style="float:right;margin:10px;">Ajouter au panier</a>
+                                <a href="{{path("cart_add", {id: bundle.id})}}" class="btn btn-primary" style="float:right;margin:10px;">Ajouter au panier</a>
                             </div>
                         {% endfor %}               
                     {% else %}
