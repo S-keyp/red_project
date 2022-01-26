@@ -39,7 +39,7 @@
 						<br>
 						<a href="{{ path('app_logout') }}">Déconnexion</a>
 					</div>
-					<a href="{{ path ('modify_pro', {id: app.user.id})}}" class="prospace mx-2 my-2 mb-0" style="float:right; margin-top: 15px; margin-left: 20px;">ESPACE PRO</a>
+					<a href="{{ path ('modify_pro', {id: app.user.id})}}" class="prospace mx-2 my-2 mb-0" style="float:right; margin-top: 15px; margin-left: 20px;">ESPACE PRO</a>	
 				{% else %}
 					<a href="{{ path('app_login') }}" class="identLink" style="float:right;margin-top: 20px; margin-left: 20px;">Identification</a>
 					<a href="{{ path ('proform')}}" class="prospace mx-2 my-2 mb-0" style="float:right; margin-top: 15px; margin-left: 20px;">ESPACE PRO</a>
