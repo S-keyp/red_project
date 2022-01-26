@@ -1,0 +1,69 @@
+.titreimage {
+  background-image: url(./../../img/pro/Group.svg);
+  height: 100%;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  background-size: cover;
+  background-position: top;
+}
+
+.row .prestation {
+  margin: 20px;
+  background-color: #2b303a;
+  border-radius: 0.8rem;
+  color: white;
+  filter: drop-shadow(7px 7px 1px #17191f);
+}
+
+.formcomple {
+  display: flex;
+  justify-content: center;
+  filter: drop-shadow(1px 1px 1px #17191f);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #2b303a);
+  padding: 5rem;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  filter: drop-shadow(5px 5px 1px #17191f);
+}
+
+.boutonajouter {
+  display: flex;
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center !important;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.art-degrade {
+  background: linear-gradient(to right, #d64933, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
+}
+
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 2px 2px 1px black;
+}
