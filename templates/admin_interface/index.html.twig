@@ -11,10 +11,13 @@
 
 </style>
 
-<div class="container-fluid">
-    <h1>Modération des comptes utilisateurs ✅</h1>
-    <div class="search">
-        {{form(form)}}
+<div class="container-fluid text-center">
+    <h1 class="mt-4">Modération des comptes utilisateurs ✅</h1>
+    <div class="search w-60 d-flex justify-content-start align-items-center text-start mb-4">
+        <form method="POST">
+            {{form_row(form.firstname)}}
+            {{form_row(form.save)}}
+        </form>
     </div>
     <table class="container text-center">
         <thead>
