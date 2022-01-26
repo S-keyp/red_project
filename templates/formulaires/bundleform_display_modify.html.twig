@@ -62,16 +62,10 @@
                Référencement
                {% endif %}
             </div>
-            {% if bundle.professionnal == user.id %}
             <div class="col-md-4 d-flex align-items-center">
                <a href="" class="btn btn-primary" style="float:right;margin:10px;">Modifier</a>
-               <a href="" class="btn btn-danger"style="float:right;margin:10px;">Supprimer</a>
+                <a href="{{path("remove_bundle", {id: user.id, bundleId: bundle.id})}}" class="btn btn-danger"style="float:right;margin:10px;">Supprimer</a>            
             </div>
-            {% else %}
-            <div class="col-md-4">
-               <a href="{{path("cart_add", {id: bundle.id})}}" class="btn btn-primary" style="float:right;margin:10px;">Ajouter au panier</a>
-            </div>
-            {% endif %}
             {% endfor %}               
             {% else %}
             {% endif %}
