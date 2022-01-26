@@ -29,6 +29,9 @@ class Order
     #[ORM\Column(type: 'integer')]
     private $professionalId;
 
+
+
+
     public function getId(): ?int
     {
         return $this->id;

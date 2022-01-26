@@ -2,14 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Order;
 use App\Entity\ProBundles;
+use App\Repository\OrderRepository;
 use App\Repository\ProBundlesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-
-
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 #[Route("/cart", name: "cart_")]
 
@@ -103,7 +105,7 @@ class PanierSessionController extends AbstractController
 
 
     #[Route('/confirm/', name: 'confirm_cart')]
-    public function confirm(SessionInterface $session, ProBundlesRepository $proBundlesRepository)
+    public function confirm(SessionInterface $session, ProBundlesRepository $proBundlesRepository,  ManagerRegistry $doctrine)
     {
 
         $panier = $session->get("panier", []);
@@ -122,8 +124,20 @@ class PanierSessionController extends AbstractController
             ];
             $total += $produit->getServicePrice() * $quantite;
 
+// $manager = $doctrine->getManager();
 
+//             $orderData = new Order();
 
+//              $orderData->setIdUtilisateur(1);
+//            $orderData->setProductId($dataPanier['id:App\Entity\ProBundles:private']);
+//            $orderData->setProfessionalId($dataPanier['Professionnal']);
+//            $orderData->setTotal($dataPanier['servicePrice']);
+//            $orderData->setQuantity($dataPanier['quantite']);
+
+//           $manager->persist($orderData);
+
+//           //save donnés 
+//           $manager->flush();
         }
 
         print_r($dataPanier);
@@ -133,5 +147,11 @@ class PanierSessionController extends AbstractController
 
         return $this->render('cart/confirm.html.twig',);
 
+    }
+
+
+
+
+    public function addOrder(){
     }
 }
