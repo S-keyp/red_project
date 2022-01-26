@@ -26,6 +26,9 @@ class Order
     #[ORM\Column(type: 'integer')]
     private $id_utilisateur;
 
+    #[ORM\Column(type: 'integer')]
+    private $professionalId;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Order
     public function setIdUtilisateur(int $id_utilisateur): self
     {
         $this->id_utilisateur = $id_utilisateur;
+
+        return $this;
+    }
+
+    public function getProfessionalId(): ?int
+    {
+        return $this->professionalId;
+    }
+
+    public function setProfessionalId(int $professionalId): self
+    {
+        $this->professionalId = $professionalId;
 
         return $this;
     }
