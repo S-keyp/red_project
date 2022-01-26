@@ -31,7 +31,7 @@
 	<body>
 		{% block navigation %}
 			<div class="preNav row justify-content-around align-center">
-				<div class="logo py-1 col-2"><img src="./../../assets/img/index/Jobster1.png" width="40%"></div>
+				<div class="logo py-1 col-2"><a href="{{ path ('homepage')}}"><img src="./../../assets/img/index/Jobster1.png" width="40%"></a></div>
 				{% if app.user %}
 					<div class="identLink text-end py-4 col-5">
 						You are logged in as
@@ -42,7 +42,7 @@
 					<a href="{{ path ('modify_pro', {id: app.user.id})}}" class="prospace my-3 pt-3 text-center col-1">ESPACE PRO</a>	
 				{% else %}
 					<a href="{{ path ('app_login') }}" class="identLink text-end py-4 col-5">Identification</a>
-					<a href="{{ path ('proform')}}" class="prospace my-3 pt-3 text-center col-1">ESPACE PRO</a>
+					<a href="{{ path ('proform')}}" class="prospace my-3 pt-4 text-center col-1">ESPACE PRO</a>
 				{% endif %}
 				
 			</div>

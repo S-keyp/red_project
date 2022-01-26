@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProBundlesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProBundlesRepository::class)]
 class ProBundles
@@ -14,9 +15,15 @@ class ProBundles
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @Assert\NotBlank
+     */
     private $titleService;
 
     #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @Assert\NotBlank
+     */
     private $descriptionService;
 
     #[ORM\Column(type: 'integer')]
@@ -26,6 +33,10 @@ class ProBundles
     private $image_service;
 
     #[ORM\Column(type: 'float')]
+    /**
+     * @Assert\Positive
+     * @Assert\NotBlank
+     */
     private $servicePrice;
 
     #[ORM\Column(type: 'smallint')]

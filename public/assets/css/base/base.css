@@ -23,7 +23,7 @@ a:hover{
     color: #2D2D2D;
     font-weight: bold;
     font-family: 'Inria Sans', sans-serif;
-    padding-inline-end: 30px;
+    transform: translate(1rem,1rem);
 }
 
 /*bg navbar */

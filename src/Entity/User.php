@@ -19,18 +19,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
+    /**
+     * @Assert\NotBlank
+     */
     private $username;
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
     #[ORM\Column(type: 'string')]
+    /**
+     * @Assert\NotBlank
+     */
     private $password;
 
     #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @Assert\NotBlank
+     */
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @Assert\NotBlank
+     */
     private $lastname;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -43,6 +55,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $profile_picture;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    /**
+     * @Assert\Positive
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 9,
+     *      max = 9,
+     *      minMessage = "Your SIRET must be {{ limit }} characters long",  
+     *      maxMessage = "Your SIRET must be {{ limit }} characters long"  
+     * )
+     */
     private $siret;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
@@ -54,7 +76,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $country;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', length: 5)]
+    /**
+     * @Assert\Positive
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage = "Your CP must be {{ limit }} characters long"  
+     * )
+     */
     private $code_postal;
 
     #[ORM\Column(type: 'string', length: 90)]
