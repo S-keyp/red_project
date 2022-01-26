@@ -13,18 +13,16 @@
 
 {% block body %}
 	<div class="titreimage">
-		<div class="titleBrand">
-			<h1>Rechercher un
-				<br>Professionnel</h1>
-		</div>
-		<h2 class="beforeBrandWave">Ma Recherche :</h2>
+		<div class="titlebrand py-5 text-center mt-5">
+      <h1>Rechercher un Professionnel</h1>
+      <p class="lead">Définissez vos critères de recherche</p>
+   </div>
 		<img src="/assets/img/index/vaguetop.svg" alt="" srcset="">
 	</div>
 	<div class="container searchParameters">
-
 		<div class="row">
 			<div class="col-md-3">
-				<h4 style="text-decoration:underline;">Métier :</h4>
+				<h4 class="text-center art-shadow">Métier</h4>
 				<div class="dropdown">
 					<form action="/professional/searchresults" method="get">
 						<select class="form-select" name="metier" aria-label="Default select example">
@@ -36,7 +34,7 @@
 					</div>
 				</div>
 				<div class="col-md-3">
-					<h4 style="text-decoration:underline;">Prix :</h4>
+					<h4 class="text-center art-shadow">Prix</h4>
 					<div class="dropdown">
 						<select class="form-select" name="order" aria-label="Default select example">
 							<option selected value="">Ordre</option>
@@ -49,7 +47,7 @@
 			</div>
 			<div class="container acces" style="margin-top:30px;">
 				<div class="row">
-					<button type="submit" class="btn btn-dark">Acceder aux résultats de ma recherche</a>
+					<button type="submit" class="btn btn-dark">Accéder aux résultats de ma recherche</a>
 				</div>
 			</form>
 
@@ -96,7 +94,7 @@
 					</p>
 
 
-					<a href="/professional/{{results.Professionnal}}" class="gotoProfile">Voir toutes les prestations</a>
+					<a href="/professional/{{results.Professionnal}}" class="text-center art-shadow gotoProfile">Voir toutes les prestations</a>
 
 
 				</div>

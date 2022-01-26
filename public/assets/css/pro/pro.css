@@ -1,138 +1,163 @@
-.titreimage{
-    background-image: url(./../../img/pro/Group.svg);
-    height: 100%;
-    display: flex;
-    color: white;
-    flex-direction: column;
-    background-size: cover;
-    background-position: top;
+.titreimage {
+  background-image: url(./../../img/pro/Group.svg);
+  height: 100%;
+  display: flex;
+  color: white;
+  flex-direction: column;
+  background-size: cover;
+  background-position: top;
 }
 
-.titleBrand{
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    height: 300px;
+.titleBrand {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 300px;
 }
 
-.titleBrand h1{
-            filter: drop-shadow(2px 4px 6px black);
+.titleBrand h1 {
+  filter: drop-shadow(2px 4px 6px black);
 }
 
-.beforeBrandWave{
-    position: absolute;
-    top: 530px;
-    text-align: center;
-    color: #262626;
-    right: 0;
-    left: 0;
+.beforeBrandWave {
+  position: absolute;
+  top: 530px;
+  text-align: center;
+  color: #262626;
+  right: 0;
+  left: 0;
+}
+
+.art-shadow {
+	text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    letter-spacing: 3px;
 }
 
 /*RECHERCHE*/
 
-.searchResults{
-    margin-top: 70px;
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    justify-content: center;
+.acces {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
-.fichePreview{
-margin: 10px;
-background-color: #898989;
+.searchResults {
+  margin-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+ 
 }
 
-.imageWithName{
-    display: flex;
+.fichePreview {
+  margin: 10px;
+  background-color: #898989;
 }
 
-.imageWithName img{
-    width: 50%;
+.imageWithName {
+  display: flex;
 }
 
-.detailedProfile{
-    padding: 16px;
-    width: 100%;
-    background: #C4C4C4;
-    font-weight: bold;
+.imageWithName img {
+  width: 50%;
+}
+
+.detailedProfile {
+  padding: 16px;
+  width: 100%;
+  background: #c4c4c4;
+  font-weight: bold;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #2b303a);
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 70%);
+  border-radius: 1rem;
 }
 
 /*ETIQUETTES*/
-.etiq{
-padding: 3px 10px;
-    color: white;
-    font-weight: bolder;
-    border-radius: 15px;
+.etiq {
+  padding: 3px 10px;
+  color: white;
+  font-weight: bolder;
+  border-radius: 15px;
 }
 /*TYPE DE COULEURS ETIQUETTES*/
 
-.etiqGraph{
-    background-color: turquoise;
-    
+.etiqGraph {
+  background-color: turquoise;
 }
-.etiqDev{
- background-color: rgb(253, 52, 52);
+.etiqDev {
+  background-color: rgb(253, 52, 52);
 }
-.etiqRef{
-    background-color: rgb(9, 202, 9);
-}
-
-
-/*Description*/ 
-
-.profileDesc{
-    display: flex;
-    flex-direction: column;
-        justify-content: space-between;
-        max-height: 200px;
-
+.etiqRef {
+  background-color: rgb(9, 202, 9);
 }
 
-.quote{
-        color: #262626;
-font-size: 1.9vw;
+/*Description*/
+
+.fichePreview {
+    margin: 10px;
+    background-color: #898989;
+    border-radius: 1rem;
 }
 
-.quotebottom{
-        color: #262626;
-font-size: 1.9vw;
-text-align: end;
+.profileDesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 200px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #2b303a);
+  box-shadow: 5px 5px 5px rgb(0 0 0 / 70%);
+  
 }
 
-.gotoProfile{
-    background: #3D3D3D;
+.quote {
+  color: #262626;
+  font-size: 1.9vw;
+}
+
+.quotebottom {
+  color: #262626;
+  font-size: 1.9vw;
+  text-align: end;
+}
+
+.gotoProfile {
+  background: #262626;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  text-decoration: none;
+}
+
+.gotoProfile:hover {
+  color: white !important;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
     color: white;
-    text-align: center;
-    padding: 15px;
-    text-decoration: none;
 }
 
-.gotoProfile:hover{
-    color: white!important;
-}
 /*Espacement espace de recherche*/
 
-.searchParameters{
-    margin-top: 150px;
+.searchParameters {
+  margin-top: 150px;
 }
 
-.pagination{
-    display: flex;
-    justify-content: center;
-    font-size: 2vw;
+.pagination {
+  display: flex;
+  justify-content: center;
+  font-size: 2vw;
 }
 
-
-.page{
-    color: black!important;
+.page {
+  color: black !important;
 }
 /*Affichage bigo */
 
 @media screen and (max-width: 1100px) {
-    .searchResults{
+  .searchResults {
     margin-top: 70px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+  }
 }
