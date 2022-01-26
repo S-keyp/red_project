@@ -19,13 +19,12 @@
          <div class="row" style="margin-top:30px;">
             <div class="row03">
                <div class="col-md-4 text-center">
-                  <img src="./../assets/img/pro/fauxgraphiste.jfif" style="width:65%;">
+                  <img src="./../../assets/img/pro/fauxgraphiste.jfif" style="width:65%;">
                </div>
-               <div class="col-md-4 text-center">
-                  <h3>{{user.lastname}}</h3>
-               </div>
-               <div class="col-md-4 text-center">
-                  <h3>{{user.firstname}}</h3>
+                <div class="col-md-4 text-center">
+                  <h2>Mes Informations</h2>
+                  <p>NOM : {{user.lastname}}</p>
+                  <p>PRENOM : {{user.firstname}}</p>
                </div>
             </div>
          </div>
@@ -49,18 +48,18 @@
             {% for bundle in bundles %}
             <div class="col-md-7 prestation">
                <input type="hidden" value="{{bundle.id}}"></input>
-               {{bundle.titleService}}<br>
-               {{bundle.descriptionService}}<br>
-               {{bundle.servicePrice}}<br>
-               {% if bundle.serviceCategory == 1 %}
-               Graphiste
-               {% endif %}
-               {% if bundle.serviceCategory == 2 %}
-               Développeur
-               {% endif %}
-               {% if bundle.serviceCategory == 3 %}
-               Référencement
-               {% endif %}
+               <h4>{{bundle.titleService}}</h4><br>
+                     <p>Détail de la prestation : <br>{{bundle.descriptionService}}</p><br>
+                     <p>Tarif : {{bundle.servicePrice}} €</p>
+                     {% if bundle.serviceCategory == 1 %}
+                     Graphiste
+                     {% endif %}
+                        {% if bundle.serviceCategory == 2 %}
+                        Développeur
+                        {% endif %}
+                           {% if bundle.serviceCategory == 3 %}
+                           Référencement
+                           {% endif %}
             </div>
             <div class="col-md-4 d-flex align-items-center">
                <a href="" class="btn btn-primary" style="float:right;margin:10px;">Modifier</a>
