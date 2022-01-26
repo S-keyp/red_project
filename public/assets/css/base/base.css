@@ -26,6 +26,10 @@ a:hover{
     transform: translate(1rem,1rem);
 }
 
+a.identLink {
+    font-size: 1.2rem;
+}
+
 /*bg navbar */
 
 .navbar{
