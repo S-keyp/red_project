@@ -9,6 +9,7 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 
 class ContactController extends AbstractController
 {
@@ -23,11 +24,11 @@ class ContactController extends AbstractController
             $contactFormData = $form->getData();
 
             $message = (new Email())
-            ->from($contactFormData['email'])
-            ->to('ton@gmail.com')
+                ->from(new Address($contactFormData['email'], $contactFormData['nom']))
+            ->to('yeetusama@gmail.com')
             ->subject('vous avez reçu un email')
-            ->text('Sender : '.$contactFormData['email'].\PHP_EOL.
-                $contactFormData['Message'],
+            ->text('Sender : '.$contactFormData['nom'].\PHP_EOL.
+                $contactFormData['message'],
                 'text/plain');
             $mailer->send($message);
 
