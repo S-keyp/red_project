@@ -40,7 +40,7 @@ class UserFormType extends AbstractType
                 'label' => 'Code postal'
             ])->add('save', SubmitType::class, [
                 'label' => 'Enregistrer'
-            ]);;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

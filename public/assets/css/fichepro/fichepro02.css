@@ -6,8 +6,8 @@
   flex-direction: column;
   background-size: cover;
   background-position: top;
-  margin-bottom: 3.5rem;
-}
+/*   margin-bottom: 3.5rem;
+ */}
 
 .beforeBrandWave {
   position: absolute;
@@ -26,34 +26,17 @@
   background-color: #747272;
   color: white;
   margin-top: 20px;
-
   margin-bottom: 50px;
   border-radius: 0.8rem;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
-/* .description {
-    background-color: #2b303a;
-    color: white !important;
-    margin-top: 20px;
-    text-align: center;
-    justify-content: center;
-    margin-bottom: 50px;
-    padding: 30px;
-    border-radius: 0.8rem;
-    margin-left: -3rem;
-    filter: drop-shadow(7px 7px 1px #17191f);
-  } */
 
 .description {
   background-color: #2b303a;
   color: white !important;
-  /* margin-top: 20px; */
-  /* text-align: center; */
-  /* justify-content: center; */
   margin-bottom: 50px;
   padding: 6px;
   border-radius: 0.8rem;
-  /* margin-left: -3rem; */
   filter: drop-shadow(7px 7px 1px #17191f);
 }
 
@@ -74,26 +57,18 @@
   justify-content: center;
 }
 
-/* .text-center {
-    text-align: center !important;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    padding-top: 1rem;
-  } */
-
 .text-center {
   text-align: center !important;
   padding-right: 1rem;
-  /* padding-left: 1rem; */
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
 
 .art-degrade {
-    background: linear-gradient(to right, #d64933, #000);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-        letter-spacing: 3px;
+  background: linear-gradient(to right, #d64933, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 3px;
 }
 
 .btn {
@@ -111,18 +86,15 @@
 }
 
 #pro_bundles_save {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 /* Prix */
-
 .promo {
   position: absolute;
-  /* left: 0; */
   top: 15px;
   width: 180px;
-  /* border: 1px solid rgb(155, 9, 155); */
   border-left: 0;
   display: flex;
   flex-direction: column;
@@ -144,7 +116,6 @@
 }
 
 /* Fiche ajouter/modifier prestation */
-
 .form-label {
   margin-bottom: 0.5rem;
   color: white;
@@ -154,35 +125,13 @@
   display: flex;
   justify-content: center;
   filter: drop-shadow(7px 7px 1px #17191f);
-  
 }
 
 .boutonajouter {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 #pro_bundles_descriptionService {
-    padding: 2rem;
+  padding: 2rem;
 }
-
-/* Keyframes */
-
-/* .description {
-    animation-duration: 3s;
-    animation-name: slidein;
-  }
-  
-  @keyframes slidein {
-    from {
-      margin-left: 100%;
-    }
-    75% {
-      font-size: 300%;
-      margin-left: 25%;
-    }
-  
-    to {
-      margin-left: 0%;
-    }
-  } */
