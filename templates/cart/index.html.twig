@@ -19,6 +19,10 @@
 			</tr>
 		</thead>
 		<tbody>
+
+{% if dataPanier %}
+
+
 			{% for element in dataPanier %}
 				<tr>
 					<td>{{element.proBundles.titleService}}</td>
@@ -48,5 +52,31 @@
 		</tbody>
 	</td>
 
+
 </tbody></tr>{% else %}<tr>
-<td colspan="5" class="text-center">Votre Panier est vide</td></tr>{% endfor %}</tbody><tfoot></tfoot><tr><td colspan="3">Total</td><td colspan="text-end">{{ total }}€</td><td></td></tr></table>{% endblock %}
+<td colspan="5" class="text-center">Votre Panier est vide</td>
+
+</tr>{% endfor %}{% endif %}</tbody><tfoot></tfoot><tr><td colspan="3">Total</td><td colspan="text-end">{{ total }}€</td><td></td></tr></table>
+
+
+{% if dataPanier %}
+
+<div class="container"><a href="/cart/confirm" class="btn btn-success">Valider le panier<i class="bi bi-cart-dash"></i></a></div>
+
+
+
+{% else %}
+
+<div class="container">
+<a href="/professional" class="btn btn-warning">Compléter mon panier
+
+	</a>
+</div>
+
+{% endif %}
+
+
+
+
+
+{% endblock %}
