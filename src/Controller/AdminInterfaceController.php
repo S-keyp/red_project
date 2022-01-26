@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\SearchType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,13 +16,21 @@ class AdminInterfaceController extends AbstractController
 {
     /* INTERFACE ADMIN */
     #[Route('/admin/interface', name: 'admin_interface')]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, Request $request): Response
     {
+        $form = $this -> createForm(SearchType::class);
+
+        if($form->handleRequest($request)->isSubmitted() && $form->isValid() ){
+            $criteria = $form->getData();
+            $recherche = $userRepository->search($criteria);
+        }
+
         $users = $userRepository->findAll();
 
         return $this->render('admin_interface/index.html.twig', [
             'controller_name' => 'AdminInterfaceController',
             'users' => $users,
+            'form' => $form->createView(),
         ]);
     }
 
