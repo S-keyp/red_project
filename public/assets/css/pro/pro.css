@@ -56,11 +56,6 @@
  
 }
 
-.fichePreview {
-  margin: 10px;
-  background-color: #898989;
-}
-
 .imageWithName {
   display: flex;
 }
@@ -101,10 +96,12 @@
 /*Description*/
 
 .fichePreview {
-    margin: 10px;
-    background-color: #898989;
-    border-radius: 1rem;
+  margin: 10px;
+  background-color: #898989;
+  max-width: 385px;
+  border-radius: 1rem;
 }
+
 
 .profileDesc {
   display: flex;
@@ -113,7 +110,7 @@
   max-height: 200px;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #2b303a);
   box-shadow: 2px 5px 5px rgb(0 0 0 / 30%);
-  
+  border-radius: 1rem;
 }
 
 .quote {
@@ -133,6 +130,7 @@
   text-align: center;
   padding: 15px;
   text-decoration: none;
+  border-radius: 0 0 1rem 1rem;
 }
 
 .gotoProfile:hover {
