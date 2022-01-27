@@ -117,6 +117,8 @@ class PanierSessionController extends AbstractController
 
         //On enregistre les données en base
 
+        $userType = "";
+
         $dataPanier = [];
         $total = 0;
         foreach ($panier as $id => $quantite) {
@@ -145,7 +147,7 @@ class PanierSessionController extends AbstractController
             } else {
                 $orderData->setIdUtilisateur('VISITEUR');
             }
-
+            $userType = $orderData->getIdUtilisateur();
             $manager->persist($orderData);
 
             //            //save donnés 
@@ -156,7 +158,11 @@ class PanierSessionController extends AbstractController
         //On clear les donnés du panier
         $session->remove("panier");
 
-        return $this->render('cart/confirm.html.twig',);
+        return $this->render(
+            'cart/confirm.html.twig',
+            ['userType' => $userType]
+
+        );
     }
 
 

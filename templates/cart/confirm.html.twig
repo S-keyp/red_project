@@ -6,20 +6,24 @@
 {% block body %}
 
 
-
-<div class="container mt-5">
-
-
-<div class="alert alert-success" role="alert">
-	<h4 class="alert-heading">Bravo !</h4>
-	<p>Votre panier à bien été enregistré.</p>
-	<hr>
-	<p class="mb-0">Vous pouvez le confirmer à tout moment depuis votre profil.</p>
-</div>
+	<div class="container mt-5">
 
 
-</div>
+		<div class="alert alert-success" role="alert">
+			<h4 class="alert-heading">Bravo !</h4>
+			<p>Votre panier à bien été enregistré.</p>
+			<hr>
+			<p class="mb-0">Vous pouvez le confirmer à tout moment depuis votre profil.</p>
+			{% if userType == "VISITEUR" %}
+				<a href="/login" class="btn btn-warning">Veuillez vous connecter pour effectuer le paiement</a>
+
+
+			{% endif %}
+
+		</div>
+
+
+	</div>
 
 
 {% endblock %}
-
