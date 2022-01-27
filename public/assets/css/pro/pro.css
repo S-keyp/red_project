@@ -45,7 +45,6 @@
 }
 
 .acces {
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 .searchResults {
@@ -65,13 +64,12 @@
 }
 
 .detailedProfile {
-  padding: 16px;
-  width: 100%;
-  background: #c4c4c4;
-  font-weight: bold;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #2b303a);
-  box-shadow: 5px 5px 5px rgb(0 0 0 / 70%);
-  border-radius: 1rem;
+    padding: 16px;
+    width: 100%;
+    background: #c4c4c4;
+    font-weight: bold;
+    /* box-shadow: 5px 5px 5px rgb(0 0 0 / 70%); */
+    /* border-radius: 1rem; */
 }
 
 /*ETIQUETTES*/
@@ -98,19 +96,19 @@
 .fichePreview {
   margin: 10px;
   background-color: #898989;
-  max-width: 385px;
-  border-radius: 1rem;
+      display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
 .profileDesc {
+      min-height: 200px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-height: 200px;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #2b303a);
-  box-shadow: 2px 5px 5px rgb(0 0 0 / 30%);
-  border-radius: 1rem;
 }
 
 .quote {
@@ -130,7 +128,6 @@
   text-align: center;
   padding: 15px;
   text-decoration: none;
-  border-radius: 0 0 1rem 1rem;
 }
 
 .gotoProfile:hover {
