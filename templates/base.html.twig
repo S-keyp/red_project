@@ -37,6 +37,8 @@
 						You are logged in as
 						{{ app.user.username }}
 						<br>
+						<a href="{{ path('modify_user', {id: app.user.id}) }}">Mes informations</a>
+						<br>
 						<a href="{{ path('app_logout') }}">Déconnexion</a>
 					</div>
 					<a href="{{ path ('modify_pro', {id: app.user.id})}}" class="prospace my-3 pt-3 text-center col-1">ESPACE PRO</a>	
