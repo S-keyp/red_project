@@ -128,22 +128,27 @@ class PanierSessionController extends AbstractController
             ];
             $total += $produit->getServicePrice() * $quantite;
 
-           $pro = $proBundlesRepository->findOneBy(array('id' => $id));
+            $pro = $proBundlesRepository->findOneBy(array('id' => $id));
 
 
- $manager = $doctrine->getManager();
+            $manager = $doctrine->getManager();
 
-             $orderData = new Order();
+            $orderData = new Order();
 
-             $orderData->setProductId($pro->getId());
+            $orderData->setProductId($pro->getId());
             $orderData->setProfessionalId($pro->getProfessionnal());
             $orderData->setTotal($pro->getServicePrice() * $quantite);
-           $orderData->setQuantity($quantite);
-           $orderData->setIdUtilisateur($this->getUser()->getUserIdentifier());
+            $orderData->setQuantity($quantite);
 
-          $manager->persist($orderData);
+            if ($this->getUser()) {
+                $orderData->setIdUtilisateur($this->getUser()->getUserIdentifier());
+            } else {
+                $orderData->setIdUtilisateur('VISITEUR');
+            }
 
-//            //save donnés 
+            $manager->persist($orderData);
+
+            //            //save donnés 
             $manager->flush();
         }
 
@@ -152,12 +157,12 @@ class PanierSessionController extends AbstractController
         $session->remove("panier");
 
         return $this->render('cart/confirm.html.twig',);
-
     }
 
 
 
 
-    public function addOrder(){
+    public function addOrder()
+    {
     }
 }

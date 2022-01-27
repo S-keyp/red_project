@@ -19,20 +19,29 @@ class ContactController extends AbstractController
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
         
+
+$emails = ['baudaisc@gmail.com', 'padseeyew@gmail.com'];
+
         if($form->isSubmitted() && $form->isValid()) {
+for ($i = 0; $i < count($emails); $i++){
 
-            $contactFormData = $form->getData();
+                $contactFormData = $form->getData();
+                $message = (new Email())
+                    ->from(new Address($contactFormData['email'], $contactFormData['nom']))
 
-            $message = (new Email())
-                ->from(new Address($contactFormData['email'], $contactFormData['nom']))
-            ->to('yeetusama@gmail.com')
-            ->subject('vous avez reçu un email')
-            ->text('Sender : '.$contactFormData['nom'].\PHP_EOL.
-                $contactFormData['message'],
-                'text/plain');
-            $mailer->send($message);
+                    ->to($emails[$i])
+                    ->subject('vous avez reçu un email')
+                    ->text(
+                        'Sender : ' . $contactFormData['nom'] . \PHP_EOL .
+                            $contactFormData['message'],
+                        'text/plain'
+                    );
+                $mailer->send($message);
 
-            $this->addFlash('success', 'Votre message a été envoyé');
+                $this->addFlash('success', 'Votre message a été envoyé');
+
+}
+    
 
             return $this->redirectToRoute('contact');
         }
