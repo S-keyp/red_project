@@ -20,6 +20,10 @@ a:hover{
     font-family: 'Inria Sans', sans-serif;
 }
 
+.prospace a{
+    padding-top: 1.2rem!important;
+}
+
 .identLink{
     text-decoration: none;
     color: #2D2D2D;
@@ -32,6 +36,9 @@ a.identLink {
     font-size: 1.2rem;
 }
 
+.preNav{
+    height: 6rem;
+}
 /*bg navbar */
 
 .navbar{

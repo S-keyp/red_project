@@ -44,8 +44,8 @@
          </div>
          <hr class="my-4">
          <div class="row">
-            <h3 class="text-center art-degrade">MES PRESTATIONS</h3>
             {% if bundles %}
+               <h3 class="text-center art-degrade">MES PRESTATIONS</h3>
                {% for bundle in bundles %}
                   <div class="col-md-7 prestation">
                      <input type="hidden" value="{{bundle.id}}"></input>
@@ -71,6 +71,7 @@
                   </div>
                {% endfor %}               
             {% else %}
+               <h3 class="text-center" style="color:white; text-decoration: underline;">Pas de prestations à afficher..</h3>
             {% endif %}
          </div>
       </div>

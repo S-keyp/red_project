@@ -15,8 +15,7 @@
     <h1 class="mt-4">Modération des comptes utilisateurs ✅</h1>
     <div class="search w-60 d-flex justify-content-start align-items-center text-start mb-4">
         <form method="POST">
-            {{form_row(form.firstname)}}
-            {{form_row(form.save)}}
+            {{form(form)}}
         </form>
     </div>
     <table class="container text-center">
@@ -44,5 +43,7 @@
         </tbody>
     {% endfor %}
     </table>
+
+    {{rest}}
 </div>
 {% endblock %}

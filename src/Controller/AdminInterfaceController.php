@@ -20,10 +20,13 @@ class AdminInterfaceController extends AbstractController
         $form = $this->createForm(SearchNameType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $f = $form->getData();
-            $users = $userRepository->findBy(['firstname' => $f]);
+            $res = $form->getData();
+            if(empty($res['firstname'])){
+                $users = $userRepository->findAll();
+            } else {
+                $users = $userRepository->findBy(['firstname' => $res]);
+            }
             
-
             return $this->render('admin_interface/index.html.twig', [
                 'controller_name' => 'AdminInterfaceController',
                 'users' => $users,

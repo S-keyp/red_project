@@ -15,8 +15,9 @@ class SearchNameType extends AbstractType
         $builder
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom',
+                'required' => false,
             ])->add('save', SubmitType::class, [
-                'label' => 'Enregistrer'
+                'label' => 'Rechercher'
             ])
         ;
     }
