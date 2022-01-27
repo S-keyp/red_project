@@ -141,3 +141,58 @@ font-family: 'Rubik', sans-serif;
     width: 75%;
     font-size: 1.5vw;
 }
+
+
+@media screen and (max-width: 970px) {
+.servicesPreview{
+ 
+    flex-direction: column; 
+     align-items: center; 
+}
+
+.beforeBrandWave{
+ position: static;
+
+    margin-top: 100px;
+    text-align: center;
+    color: #fff;
+        backdrop-filter: brightness(0.5);
+
+}
+
+
+
+.summaryTextBlock p, .summaryTextBlock h4{
+        /* line-height: 6vh; */
+    color: white;
+     font-size: unset; 
+}
+
+.blockNotations > * {
+    font-size: unset;
+}
+
+.blockNotations {
+display: flex;
+align-items: center;
+}
+
+.blockNotations h5 {
+    font-size: large;
+}
+
+.blockInformations {
+    height: auto;
+}
+
+.servicePrev{
+        margin: 20px;
+
+}
+
+.head{
+        height: 90px;
+
+}
+
+}
