@@ -20,10 +20,10 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
         
 
-$emails = ['baudaisc@gmail.com', 'padseeyew@gmail.com'];
+        $emails = ['yeetusama@gmail.com', 'padseeyew@gmail.com', 'cartmam1@hotmail.fr', 'matteoo34@icloud.com'];
 
         if($form->isSubmitted() && $form->isValid()) {
-for ($i = 0; $i < count($emails); $i++){
+            for ($i = 0; $i < count($emails); $i++){
 
                 $contactFormData = $form->getData();
                 $message = (new Email())
@@ -40,9 +40,7 @@ for ($i = 0; $i < count($emails); $i++){
 
                 $this->addFlash('success', 'Votre message a été envoyé');
 
-}
-    
-
+            }
             return $this->redirectToRoute('contact');
         }
 

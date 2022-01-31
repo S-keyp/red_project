@@ -2,20 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use Doctrine\ORM\EntityManager;
+use App\Repository\OrderRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
 use App\Entity\Order;
 use App\Entity\ProBundles;
-use App\Entity\User;
-use App\Repository\OrderRepository;
 use App\Repository\ProBundlesRepository;
-use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 #[Route("/cart", name: "cart_")]
 
